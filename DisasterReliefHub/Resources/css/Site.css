@@ -754,3 +754,27 @@ tr.pager td {
             margin: 0;
         }
 }
+
+#iamsafe_mob_btn, #iamsafe_web_btn {
+        color:white;background-color:red;background-image: linear-gradient(to bottom, #ff6666, #FF0000);display:none;text-decoration:none;
+    }
+    #iamsafe_mob_btn:hover, #iamsafe_web_btn:hover {
+        color:#fff; text-shadow:-1px -1px 1px #666;
+    }
+
+@media only screen and (min-width: 979px) {
+    #iamsafe_mob_btn {
+        display:none;
+    }
+    #iamsafe_web_btn {
+        margin-top:-5px;display:block;
+    }
+}
+@media only screen and (max-width: 978px) {
+    #iamsafe_mob_btn {
+        display:block;
+    }
+    #iamsafe_web_btn {
+        display:none;
+    }
+}
