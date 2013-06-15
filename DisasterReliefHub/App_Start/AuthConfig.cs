@@ -22,11 +22,11 @@ namespace DisasterReliefHub
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //OAuthWebSecurity.RegisterFacebookClient(
-            //    appId: "",
-            //    appSecret: "");
+            OAuthWebSecurity.RegisterFacebookClient(
+                appId: "427903630650433",
+                appSecret: "68f08c8cfa3360dadedce5d89cc62f93");
 
-            //OAuthWebSecurity.RegisterGoogleClient();
+            OAuthWebSecurity.RegisterGoogleClient();
         }
     }
 }

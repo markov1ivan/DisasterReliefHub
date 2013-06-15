@@ -195,6 +195,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\css\bootstrap-responsive.css" />
+    <Content Include="Resources\css\bootstrap-responsive.min.css" />
+    <Content Include="Resources\css\bootstrap.css" />
+    <Content Include="Resources\css\bootstrap.min.css" />
     <Content Include="Resources\css\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Resources\css\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Resources\css\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -253,6 +257,10 @@
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\Azure.pubxml" />
     <None Include="Resources\js\jquery\jquery-1.8.2.intellisense.js" />
+    <Content Include="Resources\images\glyphicons-halflings-white.png" />
+    <Content Include="Resources\images\glyphicons-halflings.png" />
+    <Content Include="Resources\js\bootstrap\bootstrap.js" />
+    <Content Include="Resources\js\bootstrap\bootstrap.min.js" />
     <Content Include="Resources\js\jquery\jquery-1.8.2.js" />
     <Content Include="Resources\js\jquery\jquery-1.8.2.min.js" />
     <None Include="Resources\js\jquery\jquery.validate-vsdoc.js" />
