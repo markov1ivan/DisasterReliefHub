@@ -18,17 +18,35 @@
             <p>The Denver Post reported (as of June 13) 457 firefighters were working the fireline, including agencies around the fire and the Colorado National Guard, as well as select personnel from fire suppression teams on Fort Carson and the nearby Air Force Academy. Governor Hickenlooper addressed Emergency Managers at the command post on June 12th. U.S. Northern Command is assisting with fire fighting efforts.</p>
             <p>It is the most destructive fire in Colorado state history, surpassing the 2012 Waldo Canyon Fire, which also began near Colorado Springs.</p>
             <br />
-            <h4>Recent News (Positive/Negative)</h4>
+            <h3>Recent News (Positive/Negative)</h3>
             <ul id="news"></ul>
         </div>
         <div class="tab-pane" id="B">
-            <p>Agencies</p>
+            <ul id="agencies">
+                <li>
+                    <img src="/images/agency_1.png" />
+                    <h3>American Red Cross Pikes Peak Chapter</h3>
+                    <p>The American Red Cross exists to provide compassionate care to those in need. Our network of generous donors, volunteers and employees share a mission of preventing and relieving suffering, here at home and around the world.</p>
+                    <p>The Red Cross responds to approximately 70,000 disasters in the United States every year, ranging from home fires that affect a single family to hurricanes that affect tens of thousands, to earthquakes that impact millions. In these events, the Red Cross provides shelter, food, health and mental health services to help families and entire communities get back on their feet. Although the Red Cross is not a government agency, it is an essential part of the response when disaster strikes. We work in partnership with other agencies and organizations that provide services to disaster victims.</p>
+                </li>
+                <li>
+                    <img src="/images/agency_2.png" />
+                    <h3>Pikes Peak Community Foundation's Emergency Relief Fund</h3>
+                    <p>The Pikes Peak Community Foundation launched the Emergency Relief Fund for the Pikes Peak Region to benefit non-profits providing local disaster relief.  The fund is modeled on last year’s Waldo Canyon Firefighters Fund, which received an outpouring of community support, but was limited to the Waldo Canyon fire.  The Emergency Relief Fund for the Pikes Peak Region will have more flexibility to quickly respond to the community's needs.</p>
+                </li>
+                <li>
+                    <img src="/images/agency_3.png" />
+                    <h3>Salvation Army - Intermountain</h3>
+                    <p>Founded more than 130 years ago by William Booth, The Salvation Army is a religious and social service organization, a branch of the Christian Church dedicated to the battle against sin and despair.</p>
+                    <p>There is an integrated ministry to body, mind and soul. The Army seeks not only to improve the physical environment and provide for material needs, but also to reveal the power of Christ's love. Its social services programs assist children, the elderly, families, and those battling addiction.</p>
+                </li>
+            </ul>
         </div>
         <div class="tab-pane" id="C">
-            <h4>Give to support the Black Forest Fire disaster</h4>
+            <h3>Give to support the Black Forest Fire disaster</h3>
             <form>
                 <p class="validateTips">All fields are required.</p>
-                <h6>About You</h6>
+                <h3>About You</h3>
                 <fieldset>
                     <input type="hidden" name="client_id" id="client_id" value="" />
                     <input type="hidden" name="client_secret" id="client_secret" value="" />
@@ -41,8 +59,14 @@
                     <label for="emailAddress">Email Address</label>
                     <input type="text" name="emailAddress" id="emailAddress" value="" class="text ui-widget-content ui-corner-all" />
                 </fieldset>
-                <h6>Give</h6>
+                <h3>Give</h3>
                 <fieldset>
+                    <label for="agencyId">Give To</label>
+                    <select name="agencyId" id="agencyId" class="select ui-widget-content ui-corner-all">
+                        <option value="1">American Red Cross Pikes Peak Chapter</option>
+                        <option value="2">Pikes Peak Community Foundation's Emergency Relief Fund</option>
+                        <option value="3">Salvation Army - Intermountain</option>
+                    </select>
                     <label for="routingNumber">Your Bank Routing Number</label>
                     <input type="text" name="routingNumber" id="routingNumber" class="text ui-widget-content ui-corner-all" />
                     <label for="accountNumber">Your Bank Account Number</label>
@@ -52,9 +76,11 @@
                         <option value="Checking">Checking</option>
                         <option value="Savings">Savings</option>
                     </select>
-                     <label for="amount">Amount to Give</label>
-                    <input type="text" name="amount" id="amount" class="text ui-widget-content ui-corner-all" />
-               </fieldset>
+                    <label for="anonymous">Give Anonymously?</label>
+                    <input type="checkbox" name="anonymous" id="anonymous" value="1" />
+                    <label for="notes">Message</label>
+                    <textarea name="notes" id="notes" onkeyup="if(parseInt($(this).val().length)>250) {$(this).val($(this).val().substr(0,250)) }$('#chars').html(250-parseInt($(this).val().length)+' characters remaining')"></textarea><br /><span id="chars">250 characters remaining</span>
+                </fieldset>
                 <fieldset>
                     <p style="text-align:center"><input type="submit" value="Give" /></p>
 
@@ -68,6 +94,7 @@
 </div>
 <script type="text/javascript">
     $(function () {
+        /*
         $.getJSON('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=https%3A%2F%2Fnews.google.com%2Fnews%2Fsearch%3Fq%3Dblack%2Bforest%2Bfire%26output%3Drss', function (data) {
             var items = [];
             $.each(data.responseData.feed.entries, function (key, feed) {
@@ -81,7 +108,7 @@
                     }
                 });
             });
-        });
+        });*/
     });
 </script>
 <style>
