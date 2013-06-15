@@ -15,9 +15,9 @@ namespace DisasterReliefHub.Domain.Mappers
             ToTable("User");
             HasKey(p => p.Id).Property(p => p.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(p => p.Email);
-            Property(p => p.Phone);
-            Property(p => p.NotificationTypeValue);
+            Property(p => p.Email).IsOptional();
+            Property(p => p.Phone).IsOptional();
+            Property(p => p.NotificationTypeValue).IsOptional();
             HasMany(e => e.MissingPersons);
 
         }

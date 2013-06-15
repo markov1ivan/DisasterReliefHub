@@ -278,7 +278,11 @@ namespace DisasterReliefHub.Controllers
                 if (user == null)
                 {
                     // Insert name into the profile table
-                    db.Save(new User() { Username = model.UserName});
+                    db.Save(new User() { 
+                        Username = model.UserName, 
+                        IsAdministrator = false,
+                        Email = model.UserName
+                    });
                     OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
                     OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
 
@@ -286,6 +290,8 @@ namespace DisasterReliefHub.Controllers
                 }
                 else
                 {
+                    user.Email = model.UserName;
+                    db.Save(user);
                     ModelState.AddModelError("UserName", "User name already exists. Please enter a different user name.");
                 }
             }

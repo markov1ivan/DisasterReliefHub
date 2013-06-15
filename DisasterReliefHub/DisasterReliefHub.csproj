@@ -209,8 +209,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreTheySafeController.cs" />
+    <Compile Include="Controllers\AgencyController.cs" />
     <Compile Include="Controllers\DisasterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SafePersonController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -342,6 +344,11 @@
     <Content Include="Views\Home\Agency.cshtml" />
     <Content Include="Views\Disaster\Index.cshtml" />
     <Content Include="Views\AreTheySafe\Index.cshtml" />
+    <Content Include="Views\Agency\Index.cshtml" />
+    <Content Include="Views\Agency\DonateTo.cshtml" />
+    <Content Include="Views\Agency\Edit.cshtml" />
+    <Content Include="Views\Home\View1.cshtml" />
+    <Content Include="Views\Home\View2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DisasterReliefHub.Domain\DisasterReliefHub.Domain.csproj">

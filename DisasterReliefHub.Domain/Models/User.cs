@@ -19,17 +19,22 @@ namespace DisasterReliefHub.Domain.Models
         [RegularExpression(@"^\([0-9]{3}\)(-)?[0-9]{3}(-)?[0-9]{4}$")]
         public string Phone { get; set; }
 
+        public bool IsAdministrator { get; set; }
         [Column("NotificationType")]
         public int NotificationTypeValue { get; set; }
 
-        public NotificationType NotificationType { get
+        public NotificationType NotificationType
         {
-            return (NotificationType)NotificationTypeValue;
-        } set
-        {
-            NotificationTypeValue = (int)value;
-        } }
+            get
+            {
+                return (NotificationType)NotificationTypeValue;
+            }
+            set
+            {
+                NotificationTypeValue = (int)value;
+            }
+        }
 
-        public List<MissingPerson> MissingPersons { get; set; } 
+        public List<MissingPerson> MissingPersons { get; set; }
     }
 }

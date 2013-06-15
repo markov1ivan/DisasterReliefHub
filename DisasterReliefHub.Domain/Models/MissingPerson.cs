@@ -14,6 +14,7 @@ namespace DisasterReliefHub.Domain.Models
         public string Location { get; set; }
 
         public User Relative { get; set; }
+
         public SafePerson SafePerson { get; set; }
     }
 }
