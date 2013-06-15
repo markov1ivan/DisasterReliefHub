@@ -28,9 +28,9 @@ namespace DisasterReliefHub
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
-            DependencyInjection.Setup();
+            //DependencyInjection.Setup();
 
-            DependencyInjection.Container.Resolve<DataContext>().InitializeDatabase();
+            //DependencyInjection.Container.Resolve<DataContext>().InitializeDatabase();
         }
     }
 }
