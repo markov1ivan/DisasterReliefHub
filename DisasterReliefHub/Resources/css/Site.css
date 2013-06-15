@@ -761,7 +761,30 @@ tr.pager td {
     #iamsafe_mob_btn:hover, #iamsafe_web_btn:hover {
         color:#fff; text-shadow:-1px -1px 1px #666;
     }
-
+#iamsafe-form {
+    overflow: hidden !important;
+}
+#iamsafe-form form {
+    float:left;
+    width:350px;
+}
+#map {
+    float:left;width:400px;
+}
+#web_safe_map {
+    height:215px;
+}
+.validateTips {
+    color: red;
+    font-weight: bold;
+    font-size: .8em;
+}
+#location {
+    max-width: 450px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 @media only screen and (min-width: 979px) {
     #iamsafe_mob_btn {
         display:none;
