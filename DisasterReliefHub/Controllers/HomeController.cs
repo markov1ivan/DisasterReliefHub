@@ -15,6 +15,13 @@ namespace DisasterReliefHub.Controllers
             return View();
         }
 
+        public ActionResult Disaster()
+        {
+            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";

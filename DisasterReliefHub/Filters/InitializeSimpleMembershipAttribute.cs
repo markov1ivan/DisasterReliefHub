@@ -3,6 +3,12 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
+
+using Autofac;
+
+using DisasterReliefHub.App_Start;
+using DisasterReliefHub.Domain.Repository;
+
 using WebMatrix.WebData;
 using DisasterReliefHub.Models;
 
@@ -25,20 +31,14 @@ namespace DisasterReliefHub.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                
 
                 try
                 {
-                    using (var context = new UsersContext())
-                    {
-                        if (!context.Database.Exists())
-                        {
-                            // Create the SimpleMembership database without Entity Framework migration schema
-                            ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
-                        }
-                    }
+                    WebSecurity
+                        .InitializeDatabaseConnection("DefaultConnection", "User", "Id", "Username", autoCreateTables: true);
+                    IRepository repo = DependencyInjection.Container.Resolve<IRepository>();
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {
