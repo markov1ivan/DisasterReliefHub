@@ -20,9 +20,8 @@ namespace DisasterReliefHub.Domain.Mappers
             Property(p => p.LastName);
             Property(p => p.Location);
             Property(p => p.Picture);
-            ToTable("User");
-            HasRequired(e => e.Relative).WithRequiredPrincipal();
-            HasOptional(e => e.SafePerson).WithOptionalPrincipal();
+            //HasOptional(e => e.Relative).WithRequired().Map(x=>x.MapKey("RelativeFk"));
+            HasOptional(e => e.SafePerson).WithRequired().Map(x=>x.MapKey("SafePersonFk"));
         }
     }
 }

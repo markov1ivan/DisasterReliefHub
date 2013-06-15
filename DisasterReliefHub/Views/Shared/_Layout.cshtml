@@ -27,7 +27,8 @@
     <body>
         <header>
             <div id="iamsafe-form" title="Tell others you are safe">
-                <form>
+                @using (Html.BeginForm("IAmSafe", "SafePerson"))
+                {
                     <h3>About You</h3>
                     <p class="validateTips">All form fields are required.</p>
                     <fieldset>
@@ -40,7 +41,7 @@
                         <input type="hidden" name="safe_lat" id="safe_lat" value="" />
                         <input type="hidden" name="safe_lng" id="safe_lng" value="" />
                     </fieldset>
-                </form>
+                }
                 <div id="map">
                     <h3>Your Location</h3>
                     <div id="location"></div>
@@ -60,6 +61,8 @@
                             <ul class="nav" id="main-menu-left">
                                 <li><a id="iamsafe_web_btn" class="btn btn-primary btn-large" href="#">I AM SAFE</a></li>
                                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Safe", "Index", "SafePerson")</li>
+                                <li>@Html.ActionLink("Agencies", "Index", "Agency")</li>
                                 <li>@Html.ActionLink("About", "About", "Home")</li>
                                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                             </ul>
