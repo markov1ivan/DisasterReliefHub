@@ -9,6 +9,44 @@
         <link rel="stylesheet" href="~/Resources/css/bootstrap-responsive.css"/>
         <script type="text/javascript" src="~/Resources/js/bootstrap/bootstrap.js"></script>
         <script type="text/javascript" src="~/Resources/js/lib/modernizr-2.6.2.js"></script>
+        <script type="text/javascript">
+            function retrieve_zip(callback) {
+                try { if (!google) { google = 0; } } catch (err) { google = 0; } // Stupid Exceptions
+                if (navigator.geolocation) // FireFox/HTML5 GeoLocation
+                {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        zip_from_latlng(position.coords.latitude, position.coords.longitude, callback);
+                    });
+                }
+                else if (google && google.gears) // Google Gears GeoLocation
+                {
+                    var geloc = google.gears.factory.create('beta.geolocation');
+                    geloc.getPermission();
+                    geloc.getCurrentPosition(function (position) {
+                        zip_from_latlng(position.latitude, position.longitude, callback);
+                    }, function (err) { });
+                }
+            }
+            function zip_from_latlng(latitude, longitude, callback) {
+                // Setup the Script using Geonames.org's WebService
+                var script = document.createElement("script");
+                script.src = "http://ws.geonames.org/findNearbyPostalCodesJSON?lat=" + latitude + "&lng=" + longitude + "&callback=" + callback;
+                // Run the Script
+                document.getElementsByTagName("head")[0].appendChild(script);
+            }
+            function example_callback(json) {
+                // Now we have the data!  If you want to just assume it's the 'closest' zipcode, we have that below:
+                zip = json.postalCodes[0].postalCode;
+                country = json.postalCodes[0].countryCode;
+                state = json.postalCodes[0].adminName1;
+                county = json.postalCodes[0].adminName2;
+                place = json.postalCodes[0].placeName;
+                alert(zip);
+            }
+
+
+
+        </script>
     </head>
     <body>
         <header>
@@ -22,6 +60,7 @@
                         </a>
                         <div class="nav-collapse collapse" id="main-menu">
                             <ul class="nav" id="main-menu-left">
+                                <li><input type="button" value=" I AM SAFE " onclick="retrieve_zip("example_callback")" /></li>
                                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                                 <li>@Html.ActionLink("About", "About", "Home")</li>
                                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
@@ -47,7 +86,6 @@
                 </div>
             </footer>
         </div>
-        @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
     </body>
 </html>
