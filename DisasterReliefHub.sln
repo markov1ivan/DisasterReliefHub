@@ -3,6 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisasterReliefHub", "DisasterReliefHub\DisasterReliefHub.csproj", "{B28E8DDE-4E08-47F3-8826-91134BEE9067}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E4D36C2F-9332-42FD-B134-C3DBF387AA7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B2AFE46B-AF29-4740-BA5E-E84781DA9A37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisasterReliefHub.Domain", "DisasterReliefHub.Domain\DisasterReliefHub.Domain.csproj", "{C3201688-3F3A-48A0-86CB-6F6CCA00EBC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisasterReliefHub.Twilio", "DisasterReliefHub.Twilio\DisasterReliefHub.Twilio.csproj", "{2D7F77D5-09D8-4FD3-9E17-883B59549053}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consoles", "Consoles", "{38509769-E94C-49A3-ABA1-46E3C09BAF5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisasterReliefHub.Twilio.Console", "DisasterReliefHub.Twilio.Console\DisasterReliefHub.Twilio.Console.csproj", "{718EEB1F-74CD-4EDF-B7DB-979731E281EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisasterReliefHub.ContextIo", "DisasterReliefHub.ContextIo\DisasterReliefHub.ContextIo.csproj", "{DC25B71E-24C1-4BC5-8E30-95B4298A3397}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{538B8ED8-4F68-415E-83DE-84452D7E0273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisasterReliefHub.Tests", "DisasterReliefHub.Tests\DisasterReliefHub.Tests.csproj", "{54E06216-A5C0-476E-B449-B22217B572ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,8 +31,35 @@ Global
 		{B28E8DDE-4E08-47F3-8826-91134BEE9067}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B28E8DDE-4E08-47F3-8826-91134BEE9067}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B28E8DDE-4E08-47F3-8826-91134BEE9067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3201688-3F3A-48A0-86CB-6F6CCA00EBC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3201688-3F3A-48A0-86CB-6F6CCA00EBC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3201688-3F3A-48A0-86CB-6F6CCA00EBC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3201688-3F3A-48A0-86CB-6F6CCA00EBC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D7F77D5-09D8-4FD3-9E17-883B59549053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D7F77D5-09D8-4FD3-9E17-883B59549053}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D7F77D5-09D8-4FD3-9E17-883B59549053}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D7F77D5-09D8-4FD3-9E17-883B59549053}.Release|Any CPU.Build.0 = Release|Any CPU
+		{718EEB1F-74CD-4EDF-B7DB-979731E281EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{718EEB1F-74CD-4EDF-B7DB-979731E281EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{718EEB1F-74CD-4EDF-B7DB-979731E281EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{718EEB1F-74CD-4EDF-B7DB-979731E281EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC25B71E-24C1-4BC5-8E30-95B4298A3397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC25B71E-24C1-4BC5-8E30-95B4298A3397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC25B71E-24C1-4BC5-8E30-95B4298A3397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC25B71E-24C1-4BC5-8E30-95B4298A3397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54E06216-A5C0-476E-B449-B22217B572ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54E06216-A5C0-476E-B449-B22217B572ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54E06216-A5C0-476E-B449-B22217B572ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54E06216-A5C0-476E-B449-B22217B572ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2D7F77D5-09D8-4FD3-9E17-883B59549053} = {E4D36C2F-9332-42FD-B134-C3DBF387AA7C}
+		{DC25B71E-24C1-4BC5-8E30-95B4298A3397} = {E4D36C2F-9332-42FD-B134-C3DBF387AA7C}
+		{C3201688-3F3A-48A0-86CB-6F6CCA00EBC3} = {B2AFE46B-AF29-4740-BA5E-E84781DA9A37}
+		{718EEB1F-74CD-4EDF-B7DB-979731E281EC} = {38509769-E94C-49A3-ABA1-46E3C09BAF5E}
+		{54E06216-A5C0-476E-B449-B22217B572ED} = {538B8ED8-4F68-415E-83DE-84452D7E0273}
 	EndGlobalSection
 EndGlobal

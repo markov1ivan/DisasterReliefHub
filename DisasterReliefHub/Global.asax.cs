@@ -7,6 +7,11 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
+using Autofac;
+
+using DisasterReliefHub.App_Start;
+using DisasterReliefHub.Domain.Repository;
+
 namespace DisasterReliefHub
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -23,6 +28,9 @@ namespace DisasterReliefHub
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            DependencyInjection.Setup();
+
+            DependencyInjection.Container.Resolve<DataContext>().InitializeDatabase();
         }
     }
 }
