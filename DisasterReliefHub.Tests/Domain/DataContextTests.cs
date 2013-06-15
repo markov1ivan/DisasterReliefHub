@@ -18,15 +18,15 @@ namespace DisasterReliefHub.Tests
         public void InitializeContext()
         {
             string connection =
-                @"Data Source=(LocalDb)\v11.0;Initial Catalog=DisasterReliefHub;Integrated Security=SSPI;AttachDBFilename=C:\WC\Projects\Hackathon\DisasterReliefHub\DisasterReliefHub\App_Data\DisasterReliefHub.mdf";
+                @"Data Source=IMARKOV\SQLEXPRESS;Initial Catalog=DisasterReliefHub;Integrated Security=True";
             DataContext = new DataContext(connection);
         }
 
         [TestMethod]
         public void TestInitializeContext()
         {
-            string connection =
-                @"Data Source=(LocalDb)\v11.0;Initial Catalog=DisasterReliefHub;Integrated Security=SSPI;AttachDBFilename=C:\WC\Projects\Hackathon\DisasterReliefHub\DisasterReliefHub\App_Data\DisasterReliefHub.mdf";
+          string connection =
+            @"Data Source=(LocalDb)\v11.0;Initial Catalog=DisasterReliefHub;Integrated Security=SSPI;AttachDBFilename=C:\WC\Projects\Hackathon\DisasterReliefHub\DisasterReliefHub\App_Data\DisasterReliefHub.mdf";
             DataContext = new DataContext(connection);
             Assert.IsNotNull(DataContext);
         }

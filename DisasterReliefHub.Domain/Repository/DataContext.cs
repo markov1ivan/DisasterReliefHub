@@ -6,6 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
+using Devtalk.EF.CodeFirst;
+
 namespace DisasterReliefHub.Domain.Repository
 {
     public class DataContext: DbContext
@@ -18,6 +20,7 @@ namespace DisasterReliefHub.Domain.Repository
 
         public void InitializeDatabase()
         {
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());
             this.Database.CreateIfNotExists();
         }
 
@@ -39,7 +42,6 @@ namespace DisasterReliefHub.Domain.Repository
                 modelBuilder.Configurations.Add(configurationInstance);
             }
 
-            base.OnModelCreating(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -278,7 +278,7 @@ namespace DisasterReliefHub.Controllers
                 if (user == null)
                 {
                     // Insert name into the profile table
-                    db.Save(new User() { Username = model.UserName, Email = model.ExternalLoginData });
+                    db.Save(new User() { Username = model.UserName});
                     OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
                     OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
 

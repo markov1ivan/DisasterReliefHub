@@ -9,6 +9,8 @@ using System.Web.Routing;
 
 using Autofac;
 
+using Devtalk.EF.CodeFirst;
+
 using DisasterReliefHub.App_Start;
 using DisasterReliefHub.Domain.Repository;
 
@@ -21,16 +23,15 @@ namespace DisasterReliefHub
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
 
+            DependencyInjection.Setup();
+            DependencyInjection.Container.Resolve<DataContext>().InitializeDatabase();
+            AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
-            DependencyInjection.Setup();
-
-            DependencyInjection.Container.Resolve<DataContext>().InitializeDatabase();
         }
     }
 }
