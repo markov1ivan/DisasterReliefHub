@@ -29,5 +29,7 @@ namespace DisasterReliefHub.Domain.Models
         {
             NotificationTypeValue = (int)value;
         } }
+
+        public List<MissingPerson> MissingPersons { get; set; } 
     }
 }

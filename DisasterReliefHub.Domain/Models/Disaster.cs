@@ -9,5 +9,8 @@ namespace DisasterReliefHub.Domain.Models
     [Table("Disaster")]
     public class Disaster : Entity
     {
+        public String Name { get; set; }
+        public string Description { get; set; }
+        public List<Agency> Agencies { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace DisasterReliefHub.Tests.Domain
         public IRepository GetRepository()
         {
             string connection =
-                @"Data Source=(LocalDb)\v11.0;Initial Catalog=DisasterReliefHub;Integrated Security=SSPI;AttachDBFilename=C:\WC\Projects\Hackathon\DisasterReliefHub\DisasterReliefHub\App_Data\DisasterReliefHub.mdf";
+               @"Data Source=IMARKOV\SQLEXPRESS;Initial Catalog=DisasterReliefHub;Integrated Security=True";
             return new Repository(new DataContext(connection));
         }
 

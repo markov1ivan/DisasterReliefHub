@@ -8,18 +8,21 @@ using DisasterReliefHub.Domain.Models;
 
 namespace DisasterReliefHub.Domain.Mappers
 {
-    public class UserMap:EntityTypeConfiguration<User>
+    public class SafePersonMap : EntityTypeConfiguration<SafePerson>
     {
-        public UserMap()
+        public SafePersonMap()
         {
-            ToTable("User");
+            ToTable("SafePerson");
             HasKey(p => p.Id).Property(p => p.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.Email);
-            Property(p => p.Phone);
-            Property(p => p.NotificationTypeValue);
-            HasMany(e => e.MissingPersons);
-
+            Property(p => p.FirstName);
+            Property(p => p.LastName);
+            Property(p => p.Longitude);
+            Property(p => p.Latitude);
+            Property(p => p.Picture);
+            Property(p => p.Location);
+            HasOptional(e => e.MissingPerson).WithOptionalPrincipal();
         }
     }
 }

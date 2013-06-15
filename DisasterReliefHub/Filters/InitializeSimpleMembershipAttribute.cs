@@ -37,8 +37,6 @@ namespace DisasterReliefHub.Filters
                 {
                     WebSecurity
                         .InitializeDatabaseConnection("DefaultConnection", "User", "Id", "Username", autoCreateTables: true);
-                    IRepository repo = DependencyInjection.Container.Resolve<IRepository>();
-
                 }
                 catch (Exception ex)
                 {
