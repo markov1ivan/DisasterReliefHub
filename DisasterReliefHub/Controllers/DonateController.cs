@@ -55,9 +55,7 @@ namespace DisasterReliefHub.Controllers
                 model.Agency = agency;
                 model.Transaction = result.Response;
 
-                Donation donation = new Donation();
-                Mapper.Map(model, donation);
-                repo.Save<Donation>(donation);
+                SaveDonation(model, repo);
 
                 var mail = DependencyInjection.Container.Resolve<SendGrid>();
                 String subject = "Thank you for making a donation!";
@@ -67,9 +65,24 @@ namespace DisasterReliefHub.Controllers
                 return View("ProccessedDonate", model);
             }
 
-            return View(model);
+            return View("Donate",model);
             
         }
 
+        private static void SaveDonation(DwollaDonation model, IRepository repo)
+        {
+            Donation donation = new Donation();
+            donation.FirstName = model.FirstName;
+            donation.LastName = model.LastName;
+            donation.Email = model.Email;
+            donation.Amount = model.Amount;
+            donation.BankAccount = model.BankAccount;
+            donation.RoutingNumber = model.RoutingNumber;
+            donation.AccountType = model.AccountType;
+            donation.IsAnonymously = model.IsAnonymously;
+            donation.Notes = model.Notes;
+            donation.Transaction = model.Transaction;
+            repo.Save<Donation>(donation);
+        }
     }
 }
