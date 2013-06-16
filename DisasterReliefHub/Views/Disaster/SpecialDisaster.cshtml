@@ -99,7 +99,7 @@
                  {
                      var person = Model.SafePeople[idx];
                      string style = ((idx % 2) == 0) ? "left" : "right";
-                     <li class="clearfix"><p>@string.Format("{0} {1}", @person.FirstName, @person.LastName)</p><div class="bubble"><p>@person.Message</p><input type="button" value=" Chat " onclick="videoChat('@person.Id    ')" /></div></li>
+                     <li class="clearfix"><p>@string.Format("{0} {1}", @person.FirstName, @person.LastName)</p><div class="bubble"><p>@person.Message</p><input type="button" value=" Chat " onclick="videoChat('@person.Id')" /></div></li>
                  }
                 </ul>
              }          
