@@ -8,7 +8,7 @@
     $("agencyId").change(function(e){});
     });
 }
-<h2>Black Forest Fire (Black Forest, Colorado)</h2>
+<h2>Hack The Midwest Earthquake (Kansas City, KS)</h2>
 
 <ul class="nav nav-tabs">
     <li class="active"><a href="#A" data-toggle="tab">About</a></li>
@@ -20,11 +20,10 @@
 <div class="tabbable">
     <div class="tab-content">
         <div class="tab-pane active" id="A">
-            <iframe style="float:right" width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps?sll=39.1236290381491,-94.7493542618075&amp;sspn=1.0542395376288178,1.8378613908683163&amp;t=h&amp;q=black+forest,+colorado&amp;dg=opt&amp;ie=UTF8&amp;hq=&amp;hnear=Black+Forest,+El+Paso,+Colorado&amp;ll=39.02702,-104.687042&amp;spn=0.118553,0.164108&amp;z=13&amp;output=embed"></iframe>
-            <p>The Black Forest fire is an ongoing forest fire that began near Highway 83 and Shoup Road in Black Forest, Colorado around 1:00 PM on June 11, 2013. As of the morning of June 13, 2013 several evacuations for the area have been ordered, and at least 360 structures have been lost according to The Denver Post. The evacuation area is 94,000 acres (147 sq mi; 380 km2) acres, 13,000 homes and 38,000 people. The fire has estimated to have currently burned over 15,000 acres (23 sq mi; 61 km2). There have been two fatalities as a result of this fire.</p>
-            <p>Three shelters have been coordinated in the area for humans, including Elbert County Fairgrounds, which is accepting humans, pets, and large animals. Two other shelters are designated for large animals only.</p>
-            <p>The Denver Post reported (as of June 13) 457 firefighters were working the fireline, including agencies around the fire and the Colorado National Guard, as well as select personnel from fire suppression teams on Fort Carson and the nearby Air Force Academy. Governor Hickenlooper addressed Emergency Managers at the command post on June 12th. U.S. Northern Command is assisting with fire fighting efforts.</p>
-            <p>It is the most destructive fire in Colorado state history, surpassing the 2012 Waldo Canyon Fire, which also began near Colorado Springs.</p>
+            <iframe style="float:right;margin-left:10px;margin-right:20px" width="400" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps?sll=39.12323499981032,-94.74863671535867&amp;sspn=0.2634524841361534,0.41687771293984693&amp;t=h&amp;q=1702+Village+West+Parkway,+Kansas+City,+KS+66111&amp;dg=opt&amp;ie=UTF8&amp;hq=&amp;hnear=1702+Village+W+Pkwy,+Kansas+City,+Wyandotte,+Kansas+66111&amp;ll=39.121138,-94.823341&amp;spn=0.005827,0.00912&amp;z=16&amp;iwloc=A&amp;output=embed"></iframe>
+            <p>After 27+ grueling hours of app building, high-five-giving, and pizza eating…teams at Hack The Midwest presented their entries in hopes of winning a prize (or two)!</p>
+            <p>With over 100 developers & 28 submissions…there were some amazing ideas! We’re excited to bring you the first in a series of posts about Hack The Midwest!</p>
+            <p>Today, we’ll be covering 4 of the winning entries for our “Special Award” categories as selected by our panel of judges. Check back this week for more updates – which include the remaining winners of “Special Award” categories and the best use of our partner APIs.</p>
             <br />
             <h3>Recent News (Positive/Negative)</h3>
             <ul id="news"></ul>
@@ -33,25 +32,25 @@
             <ul id="agencies" class="clearfix">
                 <li class="clearfix">
                     <img src="/Resources/images/agency_1.png" />
-                    <h3>American Red Cross Pikes Peak Chapter</h3>
+                    <h3>American Red Cross</h3>
                     <p>The American Red Cross exists to provide compassionate care to those in need. Our network of generous donors, volunteers and employees share a mission of preventing and relieving suffering, here at home and around the world.</p>
                     <p>The Red Cross responds to approximately 70,000 disasters in the United States every year, ranging from home fires that affect a single family to hurricanes that affect tens of thousands, to earthquakes that impact millions. In these events, the Red Cross provides shelter, food, health and mental health services to help families and entire communities get back on their feet. Although the Red Cross is not a government agency, it is an essential part of the response when disaster strikes. We work in partnership with other agencies and organizations that provide services to disaster victims.</p>
                 </li>
                 <li class="clearfix">
                     <img src="/Resources/images/agency_2.png" />
-                    <h3>Pikes Peak Community Foundation's Emergency Relief Fund</h3>
-                    <p>The Pikes Peak Community Foundation launched the Emergency Relief Fund for the Pikes Peak Region to benefit non-profits providing local disaster relief.  The fund is modeled on last year’s Waldo Canyon Firefighters Fund, which received an outpouring of community support, but was limited to the Waldo Canyon fire.  The Emergency Relief Fund for the Pikes Peak Region will have more flexibility to quickly respond to the community's needs.</p>
+                    <h3>Heart to Heart International</h3>
+                    <p>Heart to Heart International has been creating a healthier world since 1992. Our mission is to improve global health through initiatives that connect people and resources to a world in need. Through our mobilization efforts, we provide medical education, deliver medical aid, respond to people in crisis and address community-health concerns around the globe.</p>
                 </li>
                 <li class="clearfix">
                     <img src="/Resources/images/agency_3.gif" />
-                    <h3>Salvation Army - Intermountain</h3>
+                    <h3>Salvation Army</h3>
                     <p>Founded more than 130 years ago by William Booth, The Salvation Army is a religious and social service organization, a branch of the Christian Church dedicated to the battle against sin and despair.</p>
                     <p>There is an integrated ministry to body, mind and soul. The Army seeks not only to improve the physical environment and provide for material needs, but also to reveal the power of Christ's love. Its social services programs assist children, the elderly, families, and those battling addiction.</p>
                 </li>
             </ul>
         </div>
         <div class="tab-pane" id="C">
-            <h3>Give to support the Black Forest Fire disaster</h3>
+            <h3>Give to support the Hack The Midwest Earthquake disaster</h3>
            @using (Html.BeginForm("Index", "Donate"))
            {
                @Html.AntiForgeryToken()
@@ -164,8 +163,7 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        /*
-        $.getJSON('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=https%3A%2F%2Fnews.google.com%2Fnews%2Fsearch%3Fq%3Dblack%2Bforest%2Bfire%26output%3Drss', function (data) {
+        $.getJSON('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=https%3A%2F%2Fnews.google.com%2Fnews%2Fsearch%3Fq%3Dhackathon%26output%3Drss', function (data) {
             var items = [];
             $.each(data.responseData.feed.entries, function (key, feed) {
                 $.ajax({
@@ -178,10 +176,16 @@
                     }
                 });
             });
-        });*/
+        });
     });
 </script>
 <style>
+    #A {
+        font-size: 1.5em;
+    }
+        #A p {
+            margin-bottom: 20px;
+        }
     #news {
     }
     #news li {
@@ -191,7 +195,7 @@
         border-top: none;
     }
     #news .sentiment {
-        float: right;margin-top: 10px;
+        float: right;margin-top: 10px;margin-right:20px;
     }
     #news li table tr td:last-child font br:first-child {
         display: none;
@@ -205,7 +209,7 @@
             list-style: none;border-bottom:1px solid #ccc;border-top:1px solid #fff
         }
             #agencies li img {
-                float: right;max-height:100px;margin:20px
+                float: right;max-height:100px;margin:80px 20px 50px 20px
             }
     #agencies li:first-of-type {
         border-top: none;
