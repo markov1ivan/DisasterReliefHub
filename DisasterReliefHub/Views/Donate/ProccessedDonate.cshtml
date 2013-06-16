@@ -7,22 +7,17 @@
 @using (Html.BeginForm())
 {
     string disaster = string.Empty;
-        if (Model.Disaster != null)
+    if (Model.Disaster != null && !string.IsNullOrEmpty(Model.Disaster.Name))
         {
             disaster = " for " + Model.Disaster.Name;
         }
-    <h2>Thank for donating to @Model.Agency.Name@disaster</h2>
+    <h2>Thank for donating to the @Model.Agency.Name@disaster</h2>
     <fieldset>
-        <div class="editor-label">Amount Donated</div>
-        <div class="editor-field">
-            @Html.DisplayFor(model => model.Amount)
-        </div>
-        
-        <div class="editor-label">Transaction</div>
-        <div class="editor-field">
-            @Html.DisplayFor(model => model.Transaction)
-        </div>
+        <h4>Transaction #@Html.DisplayFor(model => model.Transaction)</h4>
+        <p>Amount Donated: $@Html.DisplayFor(model => model.Amount)</p>
+        <p>We have emailed you a receipt for your Tax deductable donation.</p>
     </fieldset>
+    
 }
 
 <div>

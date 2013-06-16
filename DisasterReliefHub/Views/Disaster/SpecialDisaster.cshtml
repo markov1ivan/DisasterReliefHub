@@ -9,46 +9,14 @@
 }
 @section scripts
 {
-    <script type="text/javascript" src="/Resources/js/lib/jquery.dataTables.js"></script>
     <script>
-        $(document).ready(function () {
+        $(function () {
             $("#agencyId").val($("#Donation_Agency_Id").val());
             $("#agencyId").change(function (e) {
                 var selected = $("#agencyId").find(":selected").val();
                 $("#Donation_Agency_Id").val(selected);
             });
             
-            var dataTable = $('#safegrid').dataTable({
-                //            sDom: '<"top"i>rt<"bottom"lp<"clear">',
-                sPaginationType: "full_numbers",
-                "aoColumns": [
-                    null,
-    null,
-    null],
-                bFilter: false,
-                bInfo: true,
-                bJQueryUI: true,
-                bProcessing: false,
-                bServerSide: false,
-            });
-
-            $('#safegrid').show();
-            $('input.filter').keyup(function () {
-                /* Filter on the column (the index) of this element */
-                $('#safegrid').dataTable().fnFilter($(this).val(), $(this).data('tablecolumn'));
-            });
-            
-            var donations = $('#donations').dataTable({
-                sPaginationType: "full_numbers",
-                "aoColumns": [null,null,null],
-                bFilter: false,
-                bInfo: true,
-                bJQueryUI: true,
-                bProcessing: false,
-                bServerSide: false,
-            });
-
-            $('#donations').show();
         });
     </script>
 }
@@ -75,13 +43,13 @@
         <div class="tab-pane" id="B">
             <ul id="agencies" class="clearfix">
                 @foreach (var agency in Model.Agencies)
-                    {
+                {
                         <li class="clearfix">
                             <img src="@agency.Image" />
                             <h3>@agency.Name</h3>
                             <p>@Html.Raw(agency.Description)</p>
                         </li>
-                    }
+                }
             </ul>
         </div>
         <div class="tab-pane" id="C">
@@ -100,79 +68,48 @@
             @Html.Partial("DonationControl", Model.Donation)
         </div>
         <div class="tab-pane" id="D">
-            <p>List of Donations Made</p>
+            <h3>Contributions to the Cause...Thank You!</h3>
             <section>
-                    <table class="table table-bordered table-striped table-hover" id="donations">
-        <thead>
-            <th>Name</th>
-            <th>Message</th>
-            <th>Donation</th>
-        </thead>
-        <tbody>
-            @if (Model.Donations  != null && Model.Donations.Any())
+            @if (Model.Donations != null && Model.Donations.Any())
             {
-                foreach (Donation donation in Model.Donations)
-                {
-                <tr>
-                    <td>@string.Format("{0} {1}", @donation.FirstName, @donation.LastName)</td>
-                    <td>@donation.Notes</td>
-                    <td>@donation.Amount</td>
-                </tr>
-                }
+                <ul id="donations">
+                 @for (int idx = 0; idx < Model.Donations.Count; idx++)
+                 {
+                     var donation = Model.Donations[idx];
+                     string style = ((idx % 2) == 0) ? "left" : "right";
+                     <li class="clearfix"><p>@string.Format("{0} {1}", @donation.FirstName, @donation.LastName)</p><div class="bubble"><p>@donation.Notes</p><span>@string.Format("{0:C}",donation.Amount)</span></div></li>
+                 }
+                </ul>
             }
-        </tbody>
-        <tfoot></tfoot>
-    </table>
             </section>
         </div>
         <div class="tab-pane" id="E">
-            <p>List of Safe People</p>
+            <h3>The following have all checked in!</h3>
             <section>
-                <div id="table-filters">
-                    <div class="left-culumn">
-                        <div class="field">
-                            <div class="editor-label">Person Filter</div>
-                            <div class="editor-field">
-                                <input class="filter actions" data-tablecolumn="1" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
     <div id="streams">  
         <div id="stream-container-1" class="stream-container"></div>
         <div id="stream-container-2" class="stream-container"></div>
         <div id="stream-container-3" class="stream-container"></div>
         <div id="stream-container-4" class="stream-container"></div>
      </div>
-     <table class="table table-bordered table-striped table-hover" id="safegrid">
-        <thead>
-            <th>Name</th>
-            <th>Message</th>
-            <th>Chat</th>
-        </thead>
-        <tbody>
-            @if (Model.SafePeople != null && Model.SafePeople.Any())
-            {
-                foreach (SafePerson person in Model.SafePeople)
-                {
-                <tr>
-                    <td>@string.Format("{0} {1}", @person.FirstName, @person.LastName)</td>
-                    <td>@person.Message</td>
-                    <td><input type="button" value=" Chat " onclick="videoChat('@person.Id')" /></td>
-                </tr>
-                }
-            }
-        </tbody>
-        <tfoot></tfoot>
-    </table>
+             @if (Model.SafePeople != null && Model.SafePeople.Any())
+             {
+                <ul id="safe">
+                 @for (int idx = 0; idx < Model.SafePeople.Count; idx++)
+                 {
+                     var person = Model.SafePeople[idx];
+                     string style = ((idx % 2) == 0) ? "left" : "right";
+                     <li class="clearfix"><p>@string.Format("{0} {1}", @person.FirstName, @person.LastName)</p><div class="bubble"><p>@person.Message</p><input type="button" value=" Chat " onclick="videoChat('@person.Id    ')" /></div></li>
+                 }
+                </ul>
+             }          
 </section>
         </div>
     </div>
 </div>
 <script type="text/javascript">
     $(function () {
-        $('#Donation_Amount').attr('placeholder', '0.00').val('');
-        /*
+        $('#Amount').attr('placeholder', '0.00').val('');
         $.getJSON('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=https%3A%2F%2Fnews.google.com%2Fnews%2Fsearch%3Fq%3Dhackathon%26output%3Drss', function (data) {
             var items = [];
             $.each(data.responseData.feed.entries, function (key, feed) {
@@ -186,7 +123,7 @@
                     }
                 });
             });
-        });*/
+        });
     });
     function videoChat(id) {
         $('#streams').show();
@@ -194,6 +131,7 @@
         var session = '';
         var token = '';
         var apiKey = '32385772';
+        var _streams = [];
         $.getJSON('http://comicbookrealm.com/contextio/opentok.php?id='+id+'&callback=?',function(response) {
             sessionId = response.sessionId;
             token = response.token;
@@ -210,9 +148,7 @@
         function sessionConnectedHandler(event) {
             var div = document.createElement("div");
             div.setAttribute("id", "publisher");
-            //alert(event.streams.length+1);
-            var streamscount = parseInt(event.streams.length)+1;
-            var container = document.getElementById("stream-container-"+streamscount);
+            var container = document.getElementById("stream-container-1");
             container.appendChild(div);
 
             var publisher = TB.initPublisher(apiKey, "publisher");
@@ -228,18 +164,18 @@
         function streamDestroyedHandler(event) {
             for (var i = 0; i < event.streams.length; i++) {
                 var stream = event.streams[i];
-                streams.splice(_streams.indexOf(stream), 1);
+                _streams.splice(_streams.indexOf(stream), 1);
             }
         }
 
         function subscribeToStreams(streams) {
             for (var i = 0; i < streams.length; i++) {
-                if (streams.length >= 4) {
+                if (_streams.length >= 4) {
                     return;
                 }
 
                 var stream = streams[i];
-                streams.push(stream);
+                _streams.push(stream);
 
                 // Make sure we don't subscribe to ourself
                 if (streams[i].connection.connectionId == session.connection.connectionId) {
@@ -270,7 +206,7 @@
                 session.subscribe(streams[i], div.id);
             }
         }
-   }
+    }
 </script>
 <style>
     #A {
@@ -353,5 +289,68 @@ overflow: hidden;
 
 #stream-container-3 {
   border-right: 1px dotted #ccc;
+}
+    #donations li, #safe li {
+        list-style: none;margin-bottom:5px
+    }
+    #donations li > p:first-of-type, #safe li > p:first-of-type {
+float: left;
+width: 150px;
+text-align: right;
+margin-right: 25px;
+padding-top: 12px;
+
+    }
+    #donations li div p, #safe li div p {
+padding-top:13px;
+float:left
+    }
+        #donations li div span {
+            font-size: 2.5em;
+            float: right;
+            margin-right: 25px;
+            margin-top: 8px;
+        }
+    .bubble 
+{
+    float:left;
+position: relative;
+width: 75%;
+padding: 2px 5px 2px 10px;
+background: #ffffff;
+border: #7F7F7F solid 3px;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+    .bubble input[type=button] {
+        float: right;margin:right:10px
+    }
+.bubble:after 
+{
+content: "";
+position: absolute;
+top: 10px;
+left: -15px;
+border-style: solid;
+border-width: 11px 15px 11px 0;
+border-color: transparent #ffffff;
+display: block;
+width: 0;
+z-index: 1;
+}
+
+.bubble:before 
+{
+content: "";
+position: absolute;
+top: 8px;
+left: -20px;
+border-style: solid;
+border-width: 13px 17px 13px 0;
+border-color: transparent #7F7F7F;
+display: block;
+width: 0;
+z-index: 0;
 }
 </style>
