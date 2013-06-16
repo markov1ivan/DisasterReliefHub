@@ -28,6 +28,7 @@ namespace DisasterReliefHub.Controllers
                     model.Donations = repo.Get<Donation>().ToList();
                     model.Donation = new DwollaDonation();
                     model.Donation.Agency = model.Agencies.FirstOrDefault();
+                    model.Donation.Disaster = new Disaster(){Id = 1};
                     return View("SpecialDisaster", model);
                 }
                 else

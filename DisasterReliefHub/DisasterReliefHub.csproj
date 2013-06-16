@@ -370,6 +370,7 @@
     <Content Include="Views\AreTheySafe\Index.cshtml" />
     <Content Include="Views\SafePerson\Index.cshtml" />
     <Content Include="Views\Disaster\Details.cshtml" />
+    <Content Include="Views\Disaster\DonationControl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DisasterReliefHub.Domain\DisasterReliefHub.Domain.csproj">

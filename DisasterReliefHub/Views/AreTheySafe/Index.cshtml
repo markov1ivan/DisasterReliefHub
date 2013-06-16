@@ -1,34 +1,25 @@
-﻿@{
+﻿@model DisasterReliefHub.Domain.Models.MissingPerson
+@{
     ViewBag.Title = "Index";
 }
 <h2>Are They Safe?</h2>
-<form>
     <p class="validateTips">All fields are required.</p>
     <h3>About Your Friend/Loved One</h3>
+@using (Html.BeginForm())
+{
     <fieldset>
         <label for="firstName">First Name</label>
-        <input type="text" name="firstName" id="firstName" class="text ui-widget-content ui-corner-all" />
+        <input type="text" name="FirstName" id="LastName" class="text ui-widget-content ui-corner-all" />
         <label for="lastName">Last Name</label>
-        <input type="text" name="lastName" id="lastName" class="text ui-widget-content ui-corner-all" />
+        <input type="text" name="LastName" id="LastName" class="text ui-widget-content ui-corner-all" />
         <label for="emailAddress">Email Address</label>
-        <input type="text" name="emailAddress" id="emailAddress" value="" class="text ui-widget-content ui-corner-all" />
-    </fieldset>
-    <h3>About You</h3>
-    <fieldset>
-        <label for="firstName">First Name</label>
-        <input type="text" name="firstName" id="firstName" class="text ui-widget-content ui-corner-all" />
-        <label for="lastName">Last Name</label>
-        <input type="text" name="lastName" id="lastName" class="text ui-widget-content ui-corner-all" />
-        <label for="emailAddress">Email Address</label>
-        <input type="email" name="emailAddress" id="emailAddress" value="" class="text ui-widget-content ui-corner-all" />
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
-        <label for="notify">How would you like to be notified if they are safe?</label>
+        <input type="text" name="Email" id="Email" value="" class="text ui-widget-content ui-corner-all" />
+        
+        <h4>How would you like to be notified if they are safe?</h4>
         Email: <input type="checkbox" name="notifyEmail" id="notifyEmail" class="text ui-widget-content ui-corner-all" />
         SMS: <input type="checkbox" name="notifySMS" id="notifySMS" class="text ui-widget-content ui-corner-all" onclick="if ($(this).is(':checked')) { $('#get_cell').show() } else { $('#get_cell').hide() }" />
         <span id="get_cell" style="display:none">Cell Phone #: <input type="text" name="lastName" id="lastName" class="text ui-widget-content ui-corner-all" /></span>
+
+        <p style="text-align: center"><input type="submit" value=" Give" /></p>
     </fieldset>
-    <fieldset>
-        <p style="text-align:center"><input type="submit" value=" Give" /></p>
-    </fieldset>
-</form>
+}

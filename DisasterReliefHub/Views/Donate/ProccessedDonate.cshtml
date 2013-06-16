@@ -9,9 +9,9 @@
     string disaster = string.Empty;
         if (Model.Disaster != null)
         {
-            disaster = " for " + Model.Disaster.Description;
+            disaster = " for " + Model.Disaster.Name;
         }
-    <h2>Thank for donating to @Model.Agency.Description@disaster</h2>
+    <h2>Thank for donating to @Model.Agency.Name@disaster</h2>
     <fieldset>
         <div class="editor-label">Amount Donated</div>
         <div class="editor-field">

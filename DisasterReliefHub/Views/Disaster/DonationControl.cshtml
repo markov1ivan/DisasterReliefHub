@@ -1,0 +1,89 @@
+﻿@model DisasterReliefHub.Models.DwollaDonation
+@using (Html.BeginForm("Index", "Donate"))
+           {
+               @Html.AntiForgeryToken()
+               @Html.ValidationSummary(true)
+               <fieldset>
+                   @Html.HiddenFor(model => model.Agency.Id)
+                   @Html.HiddenFor(model => model.Disaster.Id)
+                   <legend>Dwolla Donation</legend>
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.FirstName)
+                   </div>
+                   <div class="editor-field">
+                       @Html.EditorFor(model => model.FirstName)
+                       @Html.ValidationMessageFor(model => model.FirstName)
+                   </div>
+
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.LastName)
+                   </div>
+                   <div class="editor-field">
+                       @Html.EditorFor(model => model.LastName)
+                       @Html.ValidationMessageFor(model => model.LastName)
+                   </div>
+        
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.Email)
+                   </div>
+                   <div class="editor-field">
+                       @Html.EditorFor(model => model.Email)
+                       @Html.ValidationMessageFor(model => model.Email)
+                   </div>
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.Amount)
+                   </div>
+                   <div class="editor-field">
+                       @Html.EditorFor(model => model.Amount)
+                       @Html.ValidationMessageFor(model => model.Amount)
+                   </div>
+
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.BankAccount)
+                   </div>
+                   <div class="editor-field">
+                       @Html.EditorFor(model => model.BankAccount)
+                       @Html.ValidationMessageFor(model => model.BankAccount)
+                   </div>
+
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.RoutingNumber)
+                   </div>
+                   <div class="editor-field">
+                       @Html.EditorFor(model => model.RoutingNumber)
+                       @Html.ValidationMessageFor(model => model.RoutingNumber)
+                   </div>
+        
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.AccountType)
+                   </div>
+                   <div class="editor-field">
+                       <select name="AccountType" id="AccountType" class="select ui-widget-content ui-corner-all">
+                           <option value="0">Checking</option>
+                           <option value="1">Savings</option>
+                       </select>
+                       @Html.ValidationMessageFor(model => model.RoutingNumber)
+                   </div>
+        
+
+                   <div class="editor-label">
+                       <label for="anonymous">Give Anonymously?</label>
+                   </div>
+                   <div class="editor-field">
+                       @Html.CheckBoxFor(model=>model.IsAnonymously)
+                   </div>
+
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.Notes)
+                   </div>
+                   <div class="editor-field">
+                       @Html.TextAreaFor(model => model.Notes, new { onkeyup = "if(parseInt($(this).val().length)>250) {$(this).val($(this).val().substr(0,250)) }$('#chars').html(250-parseInt($(this).val().length)+' characters remaining')", })
+                       <br /><span id="chars">250 characters remaining</span>
+                       @Html.ValidationMessageFor(model => model.Notes)
+                   </div>
+
+                   <p>
+                       <input type="submit" value="Create" />
+                   </p>
+               </fieldset>
+           }
