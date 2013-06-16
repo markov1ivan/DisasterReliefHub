@@ -137,12 +137,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div
+        <div id="myPublisherDiv"></div>
     <table class="table table-bordered table-striped table-hover" id="safegrid">
         <thead>
             <th>Name</th>
             <th>Message</th>
-            <th>Actions</th>
+            <th>Chat</th>
         </thead>
         <tbody>
             @if (Model.SafePeople != null && Model.SafePeople.Any())
@@ -152,7 +153,7 @@
                 <tr>
                     <td>@string.Format("{0} {1}", @person.FirstName, @person.LastName)</td>
                     <td>@person.Message</td>
-                    <td></td>
+                    <td><input type="button" value=" Chat " onclick="videoChat('@person.Id')" /></td>
                 </tr>
                 }
             }
@@ -165,6 +166,8 @@
 </div>
 <script type="text/javascript">
     $(function () {
+        $('#Donation_Amount').attr('placeholder', '0.00').val('');
+        /*
         $.getJSON('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=https%3A%2F%2Fnews.google.com%2Fnews%2Fsearch%3Fq%3Dhackathon%26output%3Drss', function (data) {
             var items = [];
             $.each(data.responseData.feed.entries, function (key, feed) {
@@ -178,8 +181,25 @@
                     }
                 });
             });
-        });
+        });*/
     });
+    function videoChat(id) {
+        var sessionId = '';
+        var token = '';
+        var apiKey = '32385772';
+        $.getJSON('http://comicbookrealm.com/contextio/opentok.php?id='+id+'&callback=?',function(response) {
+            sessionId = response.sessionId;
+            token = response.token;
+            var session = TB.initSession(sessionId);
+            session.addEventListener('sessionConnected', sessionConnectedHandler);
+            session.connect(apiKey, token);
+       });
+          
+        function sessionConnectedHandler(event) {
+            var publisher = TB.initPublisher(apiKey, 'myPublisherDiv');
+            session.publish(publisher);
+        }
+   }
 </script>
 <style>
     #A {
@@ -193,6 +213,14 @@
     #news li {
         list-style: none;height: 150px;overflow: hidden;border-bottom:1px solid #ccc;border-top:1px solid #fff;
     }
+        #news li h6 {
+            max-width: 685px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top:0px;
+            padding:5px
+        }
     #news li:first-of-type {
         border-top: none;
     }
