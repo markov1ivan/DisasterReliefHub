@@ -1,0 +1,29 @@
+﻿@model DisasterReliefHub.Models.DwollaDonation
+
+@{
+    ViewBag.Title = "CreateDonate";
+}
+
+@using (Html.BeginForm())
+{
+    string disaster = string.Empty;
+    if (Model.Disaster != null && !string.IsNullOrEmpty(Model.Disaster.Name))
+        {
+            disaster = " for " + Model.Disaster.Name;
+        }
+    <h2>Thank for donating to the @Model.Agency.Name@disaster</h2>
+    <fieldset>
+        <h4>Transaction #@Html.DisplayFor(model => model.Transaction)</h4>
+        <p>Amount Donated: $@Html.DisplayFor(model => model.Amount)</p>
+        <p>We have emailed you a receipt for your Tax deductable donation.</p>
+    </fieldset>
+    
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
