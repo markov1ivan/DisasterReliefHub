@@ -170,7 +170,7 @@
                        <label for="anonymous">Give Anonymously?</label>
                    </div>
                    <div class="editor-field" style="height:30px">
-                       <input type="checkbox" name="IsAnonymously" id="IsAnonymously" value="1" style="margin:0" />
+                       @Html.CheckBoxFor(model=>model.Donation.IsAnonymously)
                    </div>
 
                    <div class="editor-label">
