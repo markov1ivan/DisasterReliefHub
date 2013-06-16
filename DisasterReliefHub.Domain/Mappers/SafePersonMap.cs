@@ -24,7 +24,6 @@ namespace DisasterReliefHub.Domain.Mappers
             Property(p => p.City);
             Property(p => p.State);
             Property(p => p.Country);
-            HasOptional(e => e.MissingPerson).WithRequired().Map(x=>x.MapKey("MissingPersonFk"));
         }
     }
 }

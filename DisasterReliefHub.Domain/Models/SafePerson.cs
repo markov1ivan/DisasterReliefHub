@@ -17,7 +17,5 @@ namespace DisasterReliefHub.Domain.Models
         public string City { get; set; }
         public string State { get; set; }
         public string Country { get; set; }
-
-        public MissingPerson MissingPerson { get; set; }
     }
 }

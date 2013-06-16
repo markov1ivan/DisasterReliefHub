@@ -12,9 +12,10 @@ namespace DisasterReliefHub.Domain.Models
         public string Email { get; set; }
         public string Picture { get; set; }
         public string Location { get; set; }
+        public bool IsFound { get; set; }
 
         public User Relative { get; set; }
 
-        public SafePerson SafePerson { get; set; }
+     
     }
 }

@@ -225,6 +225,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AreTheySafeModel.cs" />
     <Compile Include="Models\DwollaDonation.cs" />
     <Compile Include="Models\SpecialDisaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -304,7 +305,6 @@
     <Content Include="Resources\images\glyphicons-halflings.png" />
     <Content Include="Resources\js\bootstrap\bootstrap.js" />
     <Content Include="Resources\js\bootstrap\bootstrap.min.js" />
-    <Content Include="Resources\js\md5.js" />
     <Content Include="Resources\js\jquery\jquery-1.8.2.js" />
     <Content Include="Resources\js\jquery\jquery-1.8.2.min.js" />
     <None Include="Resources\js\jquery\jquery.validate-vsdoc.js" />

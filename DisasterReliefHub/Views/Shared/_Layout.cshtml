@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using DisasterReliefHub.Code
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -63,7 +64,10 @@
                         <div class="nav-collapse collapse" id="main-menu"><ul class="nav" id="main-menu-left">
                                 <li><a id="iamsafe_web_btn" class="btn btn-primary btn-large" href="#">I AM SAFE</a></li>
                                                                               <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Are They Safe", "Index", "AreTheySafe")</li>
+                                @if (SecurityHelper.IsCurrentUserAdmin())
+                                {
+                                    <li>@Html.ActionLink("Are They Safe", "Index", "AreTheySafe")</li>
+                                }
                                 <li>@Html.ActionLink("Safe", "Index", "SafePerson")</li>
                                 <li>@Html.ActionLink("Agencies", "Index", "Agency")</li>
                             </ul>

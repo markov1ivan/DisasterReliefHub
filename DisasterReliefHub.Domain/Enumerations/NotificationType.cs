@@ -8,7 +8,8 @@ namespace DisasterReliefHub.Domain
     [Flags]
     public enum NotificationType: int
     {
-        Email = 1,
-        Phone
+        None = 1,
+        Email = 2,
+        Phone = 4
     }
 }
