@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="App_Start\DontDropDbJustCreateTablesIfModelChangedStart.cs" />
     <Compile Include="Mappers\AgencyMap.cs" />
+    <Compile Include="Mappers\ErrorMap.cs" />
     <Compile Include="Mappers\SafePersonMap.cs" />
     <Compile Include="Mappers\MissingPersonMap.cs" />
     <Compile Include="Mappers\DisasterMap.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Models\Agency.cs" />
     <Compile Include="Models\Disaster.cs" />
     <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\Error.cs" />
     <Compile Include="Models\MissingPerson.cs" />
     <Compile Include="Models\SafePerson.cs" />
     <Compile Include="Models\User.cs" />

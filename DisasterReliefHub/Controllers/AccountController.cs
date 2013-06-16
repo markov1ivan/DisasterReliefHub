@@ -280,7 +280,7 @@ namespace DisasterReliefHub.Controllers
                     // Insert name into the profile table
                     db.Save(new User() { 
                         Username = model.UserName, 
-                        IsAdministrator = false,
+                        IsAdministrator = true,
                         Email = model.UserName
                     });
                     OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);

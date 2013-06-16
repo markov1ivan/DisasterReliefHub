@@ -15,6 +15,12 @@ namespace DisasterReliefHub.Domain.Mappers
             ToTable("Agency");
             HasKey(p => p.Id).Property(p => p.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            Property(p => p.Description);
+            Property(p => p.Name);
+            Property(p => p.FirstName);
+            Property(p => p.LastName);
+            Property(p => p.Email);
         }
     }
 }
+

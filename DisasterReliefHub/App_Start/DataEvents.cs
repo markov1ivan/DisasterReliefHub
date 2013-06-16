@@ -36,7 +36,15 @@ namespace DisasterReliefHub.App_Start
                         person.State = jToken["state"].Value<string>();
                         person.Country = jToken["country"].Value<string>();
 
-                        repo.Save<SafePerson>(person);
+                        try
+                        {
+                            repo.Save<SafePerson>(person);
+                        }
+                        catch (Exception ex)
+                        {
+
+                            repo.Save<Error>(new Error() { Message = ex.Message, Details = ex.ToString() });
+                        }
                     }
                     result.Success = true;
                     return result;
