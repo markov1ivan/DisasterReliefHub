@@ -138,9 +138,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
     <div id="streams">  
         <div id="stream-container-1" class="stream-container"></div>
         <div id="stream-container-2" class="stream-container"></div>
@@ -213,8 +210,9 @@
         function sessionConnectedHandler(event) {
             var div = document.createElement("div");
             div.setAttribute("id", "publisher");
-
-            var container = document.getElementById("stream-container-1");
+            //alert(event.streams.length+1);
+            var streamscount = parseInt(event.streams.length)+1;
+            var container = document.getElementById("stream-container-"+streamscount);
             container.appendChild(div);
 
             var publisher = TB.initPublisher(apiKey, "publisher");
@@ -230,18 +228,18 @@
         function streamDestroyedHandler(event) {
             for (var i = 0; i < event.streams.length; i++) {
                 var stream = event.streams[i];
-                _streams.splice(_streams.indexOf(stream), 1);
+                streams.splice(_streams.indexOf(stream), 1);
             }
         }
 
         function subscribeToStreams(streams) {
             for (var i = 0; i < streams.length; i++) {
-                if (_streams.length >= 4) {
+                if (streams.length >= 4) {
                     return;
                 }
 
                 var stream = streams[i];
-                _streams.push(stream);
+                streams.push(stream);
 
                 // Make sure we don't subscribe to ourself
                 if (streams[i].connection.connectionId == session.connection.connectionId) {
