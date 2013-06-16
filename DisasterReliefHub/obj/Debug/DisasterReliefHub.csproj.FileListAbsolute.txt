@@ -299,3 +299,6 @@ C:\WC\Projects\Hackathon\New folder\DisasterReliefHub\DisasterReliefHub\bin\zh-H
 C:\WC\Projects\Hackathon\New folder\DisasterReliefHub\DisasterReliefHub\obj\Debug\ResolveAssemblyReference.cache
 C:\WC\Projects\Hackathon\New folder\DisasterReliefHub\DisasterReliefHub\obj\Debug\DisasterReliefHub.dll
 C:\WC\Projects\Hackathon\New folder\DisasterReliefHub\DisasterReliefHub\obj\Debug\DisasterReliefHub.pdb
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub\obj\Debug\DisasterReliefHub.dll
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub\obj\Debug\DisasterReliefHub.pdb
