@@ -5,6 +5,5 @@ C:\WC\Projects\Hackathon\DisasterReliefHub\DisasterReliefHub.Domain\bin\Debug\En
 C:\WC\Projects\Hackathon\DisasterReliefHub\DisasterReliefHub.Domain\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\WC\Projects\Hackathon\DisasterReliefHub\DisasterReliefHub.Domain\bin\Debug\WebActivator.dll
 C:\WC\Projects\Hackathon\DisasterReliefHub\DisasterReliefHub.Domain\bin\Debug\EntityFramework.xml
-C:\WC\Projects\Hackathon\DisasterReliefHub\DisasterReliefHub.Domain\obj\Debug\ResolveAssemblyReference.cache
 C:\WC\Projects\Hackathon\DisasterReliefHub\DisasterReliefHub.Domain\obj\Debug\DisasterReliefHub.Domain.dll
 C:\WC\Projects\Hackathon\DisasterReliefHub\DisasterReliefHub.Domain\obj\Debug\DisasterReliefHub.Domain.pdb

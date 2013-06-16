@@ -16,9 +16,9 @@ namespace DisasterReliefHub.Tests
         public void TestDwollaSend()
         {
             Dwolla dwolla = new Dwolla("8zYtJBBRqqmDAT5tQ9ETEMaDbiRqZ/WvTmIz3Ua8dIZXIgB3jT", "r5mkf/PFY8xffmhSd87TVmFcf7+uz48U1Ad3yyXt+8DUqC8oHN");
-            var result = dwolla.Send("markov.ivan@gmail.com", 5, "Ivan", "Markov", "000000000", "000", DwollaAccountType.Checking);
+            var result = dwolla.Send("markov.ivan@gmail.com", "markov.ivan@gmail.com", 5, "Ivan", "Markov", "000000000", "000", DwollaAccountType.Checking, string.Empty);
 
-            Assert.IsTrue(result != null && result.Success == "true");
+            Assert.IsTrue(result != null && result.Success);
         }
     }
 }
