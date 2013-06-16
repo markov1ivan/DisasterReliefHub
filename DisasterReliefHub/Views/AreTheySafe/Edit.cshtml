@@ -1,0 +1,24 @@
+﻿@model DisasterReliefHub.Models.AreTheSafeModel
+@{
+    ViewBag.Title = "Edit";
+}
+    <p class="validateTips">All fields are required.</p>
+<h3>About Your Friend/Loved One</h3>
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <label for="firstName">First Name</label>
+        <input type="text" name="FirstName" id="LastName" class="text ui-widget-content ui-corner-all" />
+        <label for="lastName">Last Name</label>
+        <input type="text" name="LastName" id="LastName" class="text ui-widget-content ui-corner-all" />
+        <label for="emailAddress">Email Address</label>
+        <input type="text" name="Email" id="Email" value="" class="text ui-widget-content ui-corner-all" />
+        
+        <h4>How would you like to be notified if they are safe?</h4>
+        Email: @Html.CheckBoxFor(model=>model.SendEmailNotification, new {@class="text ui-widget-content ui-corner-all"})
+        SMS: @Html.CheckBoxFor(model=>model.SendSmsNotification, new {@class="text ui-widget-content ui-corner-all", onclick="if ($(this).is(':checked')) { $('#get_cell').show() } else { $('#get_cell').hide() }" })
+        <span id="get_cell" style="display:none">Cell Phone #: <input type="text" name="Phone" id="Phone" class="text ui-widget-content ui-corner-all" /></span>
+
+        <p><input type="submit" value=" Give" /></p>
+    </fieldset>
+}
