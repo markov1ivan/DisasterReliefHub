@@ -68,6 +68,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.3.9.49\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -207,10 +210,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Code\SecurityHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AreTheySafeController.cs" />
     <Compile Include="Controllers\AgencyController.cs" />
     <Compile Include="Controllers\DisasterController.cs" />
+    <Compile Include="Controllers\DonateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SafePersonController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -218,6 +222,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DwollaDonation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -343,18 +348,23 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Agency.cshtml" />
     <Content Include="Views\Disaster\Index.cshtml" />
-    <Content Include="Views\AreTheySafe\Index.cshtml" />
     <Content Include="Views\Agency\Index.cshtml" />
     <Content Include="Views\Agency\DonateTo.cshtml" />
     <Content Include="Views\Agency\Edit.cshtml" />
-    <Content Include="Views\Home\View1.cshtml" />
-    <Content Include="Views\Home\View2.cshtml" />
+    <Content Include="Views\Donate\Donate- old.cshtml" />
+    <Content Include="Views\Disaster\Edit.cshtml" />
+    <Content Include="Views\Donate\Donate.cshtml" />
+    <Content Include="Views\Donate\ProccessedDonate.cshtml" />
     <Content Include="Views\Disaster\SpecialDisaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DisasterReliefHub.Domain\DisasterReliefHub.Domain.csproj">
       <Project>{c3201688-3f3a-48a0-86cb-6f6cca00ebc3}</Project>
       <Name>DisasterReliefHub.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DisasterReliefHub.Libraries\DisasterReliefHub.Libraries.csproj">
+      <Project>{879f505a-8123-4bde-b23a-71bc4ac7f4dd}</Project>
+      <Name>DisasterReliefHub.Libraries</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
