@@ -48,7 +48,7 @@ namespace DisasterReliefHub.Libraries
                 json["accountNumber"] = accountNumber;
                 json["accountType"] = accountType.ToString();
                 json["destinationType"] = "Email";
-                json["notes"] = (notes ?? string.Empty).Substring(0, 250);
+                json["notes"] = (notes ?? string.Empty).Length > 250 ? notes.Substring(0, 250) : notes;
                 string payload = json.ToString();
                 streamWriter.Write(payload);
                 streamWriter.Flush();

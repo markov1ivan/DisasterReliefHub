@@ -19,7 +19,7 @@ namespace DisasterReliefHub.Controllers
         //
         // GET: /Donate/
         [HttpGet]
-        public ActionResult Index(int agencyId = -1, int disasterId = -1)
+        public ActionResult Index(int agencyId = -1)
         {
             if (agencyId < 0)
             {
@@ -27,7 +27,7 @@ namespace DisasterReliefHub.Controllers
             }
             var repo = DependencyInjection.Container.Resolve<IRepository>();
             var agency = repo.Get<Agency>(agencyId);
-            var disaster = repo.Get<Disaster>(disasterId);
+            var disaster = new Disaster(){Id = 1};
             DwollaDonation donation = new DwollaDonation();
             donation.Agency = agency;
             donation.Disaster = disaster;

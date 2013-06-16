@@ -358,13 +358,13 @@
     <Content Include="Views\Agency\Index.cshtml" />
     <Content Include="Views\Agency\DonateTo.cshtml" />
     <Content Include="Views\Agency\Edit.cshtml" />
-    <Content Include="Views\Donate\Donate- old.cshtml" />
     <Content Include="Views\Disaster\Edit.cshtml" />
     <Content Include="Views\Donate\Donate.cshtml" />
     <Content Include="Views\Donate\ProccessedDonate.cshtml" />
     <Content Include="Views\Disaster\SpecialDisaster.cshtml" />
     <Content Include="Views\AreTheySafe\Index.cshtml" />
     <Content Include="Views\SafePerson\Index.cshtml" />
+    <Content Include="Views\Disaster\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DisasterReliefHub.Domain\DisasterReliefHub.Domain.csproj">

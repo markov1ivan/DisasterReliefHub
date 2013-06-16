@@ -14,11 +14,24 @@ namespace DisasterReliefHub.Controllers
 {
     public class DisasterController : Controller
     {
-        public ActionResult Index(int disasterId = 0)
+        public ActionResult Index(int disasterId = -1)
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            if (disasterId > 0)
+            {
+                if (disasterId == 1)
+                {
+                    return View("SpecialDisaster");
+                }
+                else
+                {
 
-            return View();
+                    var repo = DependencyInjection.Container.Resolve<IRepository>();
+                    var disaster = repo.Get<Disaster>(disasterId);
+                    return View("Details", disaster);
+                }
+            }
+ 
+            return View("Index");
         }
 
         [HttpGet]
