@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using AutoMapper;
+
 using Autofac;
 
 using DisasterReliefHub.App_Start;
@@ -52,6 +54,10 @@ namespace DisasterReliefHub.Controllers
                 model.ResultMessage = result.Message;
                 model.Agency = agency;
                 model.Transaction = result.Response;
+
+                Donation donation = new Donation();
+                Mapper.Map(model, donation);
+                repo.Save<Donation>(donation);
 
                 var mail = DependencyInjection.Container.Resolve<SendGrid>();
                 String subject = "Thank you for making a donation!";

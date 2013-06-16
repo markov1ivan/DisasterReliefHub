@@ -55,7 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\DontDropDbJustCreateTablesIfModelChangedStart.cs" />
+    <Compile Include="Enumerations\DwollaAccountType.cs" />
     <Compile Include="Mappers\AgencyMap.cs" />
+    <Compile Include="Mappers\DonationMap.cs" />
     <Compile Include="Mappers\ErrorMap.cs" />
     <Compile Include="Mappers\SafePersonMap.cs" />
     <Compile Include="Mappers\MissingPersonMap.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Mappers\UserMap.cs" />
     <Compile Include="Models\Agency.cs" />
     <Compile Include="Models\Disaster.cs" />
+    <Compile Include="Models\Donation.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Error.cs" />
     <Compile Include="Models\MissingPerson.cs" />
