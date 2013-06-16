@@ -207,6 +207,7 @@
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DataEvents.cs" />
+    <Compile Include="App_Start\MockData.cs" />
     <Compile Include="Code\DependencyInjection.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -225,6 +226,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\DwollaDonation.cs" />
+    <Compile Include="Models\SpecialDisaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Json\Handlers\JsonHttpHandler.cs" />
     <Compile Include="Utilities\Json\JsonResult.cs" />
