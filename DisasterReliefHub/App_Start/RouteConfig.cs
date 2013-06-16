@@ -12,6 +12,7 @@ namespace DisasterReliefHub
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{*json}", new { json = @".*\.json(/.*)?" });
 
             routes.MapRoute(
                 name: "Default",

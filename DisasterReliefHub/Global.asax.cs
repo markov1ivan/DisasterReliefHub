@@ -32,6 +32,7 @@ namespace DisasterReliefHub
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            DataEvents.Setup();
         }
     }
 }
