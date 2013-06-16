@@ -103,32 +103,40 @@ namespace DisasterReliefHub.Utilities.Json.Handlers
     /// </param>
     private string HandleJson(string json)
     {
-      JObject jsonObject = JObject.Parse(json);
-      JsonResult result = new JsonResult();
-      if (!string.IsNullOrEmpty((string)jsonObject["action"]))
-      {
-        // Extract the payload data from the data wrapper
-        var action = (string)jsonObject["action"];
-        var jsonData = jsonObject["data"];
-
-        if (Actions.ContainsKey(action.ToLower()))
+        JsonResult result = new JsonResult();
+        try
         {
-          Func<JObject, JsonResult> toExecute = Actions[action.ToLower()];
-          if (toExecute != null)
-          {
-
-            try
+            JObject jsonObject = JObject.Parse(json);
+            
+            if (!string.IsNullOrEmpty((string)jsonObject["action"]))
             {
-              result = toExecute.Invoke(jsonObject);
-            }
-            catch (Exception ex)
-            {
-              result.ErrorMessage = ex.ToString();
-            }
+                // Extract the payload data from the data wrapper
+                var action = (string)jsonObject["action"];
+                var jsonData = jsonObject["data"];
 
-          }
+                if (Actions.ContainsKey(action.ToLower()))
+                {
+                    Func<JObject, JsonResult> toExecute = Actions[action.ToLower()];
+                    if (toExecute != null)
+                    {
+
+                        try
+                        {
+                            result = toExecute.Invoke(jsonObject);
+                        }
+                        catch (Exception ex)
+                        {
+                            result.ErrorMessage = ex.ToString();
+                        }
+
+                    }
+                }
+            }
         }
-      }
+        catch (Exception ex)
+        {
+            result.ErrorMessage = ex.ToString() + " payload: " + json;
+        }
       string serializedResult = JsonConvert.SerializeObject(result);
       return serializedResult;
     }

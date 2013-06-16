@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Linq;
 using System.Web;
 
 using Newtonsoft.Json.Linq;
@@ -37,10 +39,7 @@ namespace DisasterReliefHub.Utilities.Json
       string json = string.Empty;
       if (request.RequestType == "POST")
       {
-        using (var reader = new StreamReader(request.InputStream))
-        {
-          json = reader.ReadToEnd();
-        }
+          json = request.Params["data"];
       }
       else
       {
