@@ -21,7 +21,7 @@ namespace DisasterReliefHub.Domain.Mappers
             Property(p => p.Location);
             Property(p => p.Picture);
             //HasOptional(e => e.Relative).WithRequired().Map(x=>x.MapKey("RelativeFk"));
-            HasOptional(e => e.SafePerson).WithRequired().Map(x=>x.MapKey("SafePersonFk"));
+            //HasOptional(e => e.SafePerson).WithRequired().Map(x=>x.MapKey("SafePersonFk"));
         }
     }
 }

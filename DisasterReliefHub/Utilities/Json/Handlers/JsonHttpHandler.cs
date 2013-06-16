@@ -119,7 +119,7 @@ namespace DisasterReliefHub.Utilities.Json.Handlers
 
             try
             {
-              result = toExecute.Invoke(JObject.Parse(jsonData.ToString()));
+              result = toExecute.Invoke(jsonObject);
             }
             catch (Exception ex)
             {

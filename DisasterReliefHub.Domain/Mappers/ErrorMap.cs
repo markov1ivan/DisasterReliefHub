@@ -8,16 +8,15 @@ using DisasterReliefHub.Domain.Models;
 
 namespace DisasterReliefHub.Domain.Mappers
 {
-    public class DisasterMap:EntityTypeConfiguration<Disaster>
+    public class ErrorMap : EntityTypeConfiguration<Error>
     {
-        public DisasterMap()
+        public ErrorMap()
         {
-            ToTable("Disaster");
+            ToTable("Error");
             HasKey(p => p.Id).Property(p => p.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(p => p.Description);
-            Property(p => p.Name);
-            HasMany(a=>a.Agencies).WithMany();
+            Property(p => p.Message);
+            Property(p => p.Details);
         }
     }
 }

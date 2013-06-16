@@ -68,6 +68,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.3.9.49\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -232,6 +235,8 @@
     <Content Include="Resources\css\bootstrap-responsive.min.css" />
     <Content Include="Resources\css\bootstrap.css" />
     <Content Include="Resources\css\bootstrap.min.css" />
+    <Content Include="Resources\css\datatables.css" />
+    <Content Include="Resources\css\jquery.dataTables.css" />
     <Content Include="Resources\css\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Resources\css\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Resources\css\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -305,9 +310,11 @@
     <Content Include="Resources\js\jquery\jquery.validate.min.js" />
     <Content Include="Resources\js\jquery\jquery.validate.unobtrusive.js" />
     <Content Include="Resources\js\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Resources\js\lib\jquery.dataTables.js" />
     <Content Include="Resources\js\lib\knockout-2.2.0.debug.js" />
     <Content Include="Resources\js\lib\knockout-2.2.0.js" />
     <Content Include="Resources\js\lib\modernizr-2.6.2.js" />
+    <Content Include="Resources\js\overall.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -341,8 +348,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
@@ -350,14 +355,16 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Agency.cshtml" />
     <Content Include="Views\Disaster\Index.cshtml" />
-    <Content Include="Views\AreTheySafe\Index.cshtml" />
     <Content Include="Views\Agency\Index.cshtml" />
     <Content Include="Views\Agency\DonateTo.cshtml" />
     <Content Include="Views\Agency\Edit.cshtml" />
-    <Content Include="Views\Home\View1.cshtml" />
-    <Content Include="Views\Home\View2.cshtml" />
+    <Content Include="Views\Donate\Donate- old.cshtml" />
+    <Content Include="Views\Disaster\Edit.cshtml" />
+    <Content Include="Views\Donate\Donate.cshtml" />
+    <Content Include="Views\Donate\ProccessedDonate.cshtml" />
     <Content Include="Views\Disaster\SpecialDisaster.cshtml" />
     <Content Include="Views\AreTheySafe\Index.cshtml" />
+    <Content Include="Views\SafePerson\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DisasterReliefHub.Domain\DisasterReliefHub.Domain.csproj">

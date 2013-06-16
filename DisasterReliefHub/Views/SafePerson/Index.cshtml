@@ -1,0 +1,72 @@
+﻿@model List<DisasterReliefHub.Domain.Models.SafePerson>
+@using DisasterReliefHub.Code
+@using DisasterReliefHub.Domain.Models
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Safe People</h2>
+@section styles{
+    <link rel="stylesheet" href="~/Resources/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="~/Resources/css/datatables.css" />
+}
+@section scripts
+{
+    <script type="text/javascript" src="/Resources/js/lib/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var dataTable = $('#safegrid').dataTable({
+                //            sDom: '<"top"i>rt<"bottom"lp<"clear">',
+                sPaginationType: "full_numbers",
+                "aoColumns": [
+                    null,
+    null,
+    null],
+                bFilter: false,
+                bInfo: true,
+                bJQueryUI: true,
+                bProcessing: false,
+                bServerSide: false,
+            });
+
+            $('#safegrid').show();
+            $('input.filter').keyup(function () {
+                /* Filter on the column (the index) of this element */
+                $('#safegrid').dataTable().fnFilter($(this).val(), $(this).data('tablecolumn'));
+            });
+        });
+    </script>
+}
+<section>
+    <div id="table-filters">
+        <div class="left-culumn">
+            <div class="field">
+                <div class="editor-label">Person Filter</div>
+                <div class="editor-field">
+                    <input class="filter actions" data-tablecolumn="1" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped table-hover" id="safegrid">
+        <thead>
+            <th>Name</th>
+            <th>Message</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (SafePerson person in Model)
+                {
+                <tr>
+                    <td>@string.Format("{0} {1}", @person.FirstName, @person.LastName)</td>
+                    <td>@person.Message</td>
+                    <td></td>
+                </tr>
+                }
+            }
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</section>

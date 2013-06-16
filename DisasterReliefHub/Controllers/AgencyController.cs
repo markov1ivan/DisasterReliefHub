@@ -20,9 +20,7 @@ namespace DisasterReliefHub.Controllers
 
         public ActionResult Index()
         {
-            var test = SecurityHelper.CurrentUser();
             var repo = DependencyInjection.Container.Resolve<IRepository>();
-            
             return View(repo.Get<Agency>().ToList());
         }
 

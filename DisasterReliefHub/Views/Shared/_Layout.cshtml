@@ -23,6 +23,7 @@
             var latlng;
         </script>
         <script type="text/javascript" src="~/Resources/js/overall.js"></script>
+        @RenderSection("styles", required: false)
     </head>
     <body>
         <header>
@@ -32,14 +33,14 @@
                     <h3>About You</h3>
                     <p class="validateTips">All form fields are required.</p>
                     <fieldset>
-                        <label for="safe_first_name">First Name</label>
-                        <input type="text" name="safe_first_name" id="safe_first_name" class="text ui-widget-content ui-corner-all" />
-                        <label for="last_name">Last Name</label>
-                        <input type="text" name="safe_last_name" id="safe_last_name" class="text ui-widget-content ui-corner-all" />
-                        <label for="safe_email">Email Address</label>
-                        <input type="text" name="safe_email" id="safe_email" value="" class="text ui-widget-content ui-corner-all" />
-                        <input type="hidden" name="safe_lat" id="safe_lat" value="" />
-                        <input type="hidden" name="safe_lng" id="safe_lng" value="" />
+                        <label for="FirstName">First Name</label>
+                        <input type="text" name="FirstName" id="FirstName" class="text ui-widget-content ui-corner-all" />
+                        <label for="LastName">Last Name</label>
+                        <input type="text" name="LastName" id="LastName" class="text ui-widget-content ui-corner-all" />
+                        <label for="Email">Email Address</label>
+                        <input type="text" name="Email" id="Email" value="" class="text ui-widget-content ui-corner-all" />
+                        <input type="hidden" name="Latitude" id="Latitude" value="" />
+                        <input type="hidden" name="Longitude" id="Longitude" value="" />
                     </fieldset>
                 }
                 <div id="map">
@@ -62,8 +63,6 @@
                                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                                 <li>@Html.ActionLink("Safe", "Index", "SafePerson")</li>
                                 <li>@Html.ActionLink("Agencies", "Index", "Agency")</li>
-                                <li>@Html.ActionLink("About", "About", "Home")</li>
-                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                             </ul>
                             <section id="login">
                                 @Html.Partial("_LoginPartial")
