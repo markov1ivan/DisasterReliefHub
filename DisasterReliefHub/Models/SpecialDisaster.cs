@@ -11,6 +11,8 @@ namespace DisasterReliefHub.Models
     {
         public List<Agency> Agencies { get; set; }
 
+        public List<SafePerson> SafePeople { get; set; }
+
         public DwollaDonation Donation { get; set; }
     }
 }

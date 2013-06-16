@@ -20,6 +20,7 @@ namespace DisasterReliefHub.Domain.Mappers
             Property(p => p.FirstName);
             Property(p => p.LastName);
             Property(p => p.Email);
+            Property(p => p.Image);
         }
     }
 }

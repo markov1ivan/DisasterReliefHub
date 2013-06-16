@@ -297,6 +297,9 @@
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\Azure.pubxml" />
     <None Include="Resources\js\jquery\jquery-1.8.2.intellisense.js" />
+    <Content Include="Resources\images\agency_1.png" />
+    <Content Include="Resources\images\agency_2.png" />
+    <Content Include="Resources\images\agency_3.gif" />
     <Content Include="Resources\images\glyphicons-halflings-white.png" />
     <Content Include="Resources\images\glyphicons-halflings.png" />
     <Content Include="Resources\js\bootstrap\bootstrap.js" />

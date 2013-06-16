@@ -1,14 +1,41 @@
-﻿@model DisasterReliefHub.Models.SpecialDisaster
+﻿@using DisasterReliefHub.Domain.Models
+@model DisasterReliefHub.Models.SpecialDisaster
 @{
     ViewBag.Title = "Disaster";
 }
+@section styles{
+    <link rel="stylesheet" href="~/Resources/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="~/Resources/css/datatables.css" />
+}
 @section scripts
 {
+    <script type="text/javascript" src="/Resources/js/lib/jquery.dataTables.js"></script>
     <script>
         $(document).ready(function () {
-            $("agencyId").val($("input[name=Donation.Agency.Id]").val());
-            $("agencyId").change(function (e) {
-                $("input[name=Donation.Agency.Id]").val($("agencyId").find(":selected").val());
+            $("#agencyId").val($("#Donation_Agency_Id").val());
+            $("#agencyId").change(function (e) {
+                var selected = $("#agencyId").find(":selected").val();
+                $("#Donation_Agency_Id").val(selected);
+            });
+            
+            var dataTable = $('#safegrid').dataTable({
+                //            sDom: '<"top"i>rt<"bottom"lp<"clear">',
+                sPaginationType: "full_numbers",
+                "aoColumns": [
+                    null,
+    null,
+    null],
+                bFilter: false,
+                bInfo: true,
+                bJQueryUI: true,
+                bProcessing: false,
+                bServerSide: false,
+            });
+
+            $('#safegrid').show();
+            $('input.filter').keyup(function () {
+                /* Filter on the column (the index) of this element */
+                $('#safegrid').dataTable().fnFilter($(this).val(), $(this).data('tablecolumn'));
             });
         });
     </script>
@@ -35,23 +62,14 @@
         </div>
         <div class="tab-pane" id="B">
             <ul id="agencies" class="clearfix">
-                <li class="clearfix">
-                    <img src="/Resources/images/agency_1.png" />
-                    <h3>American Red Cross</h3>
-                    <p>The American Red Cross exists to provide compassionate care to those in need. Our network of generous donors, volunteers and employees share a mission of preventing and relieving suffering, here at home and around the world.</p>
-                    <p>The Red Cross responds to approximately 70,000 disasters in the United States every year, ranging from home fires that affect a single family to hurricanes that affect tens of thousands, to earthquakes that impact millions. In these events, the Red Cross provides shelter, food, health and mental health services to help families and entire communities get back on their feet. Although the Red Cross is not a government agency, it is an essential part of the response when disaster strikes. We work in partnership with other agencies and organizations that provide services to disaster victims.</p>
-                </li>
-                <li class="clearfix">
-                    <img src="/Resources/images/agency_2.png" />
-                    <h3>Heart to Heart International</h3>
-                    <p>Heart to Heart International has been creating a healthier world since 1992. Our mission is to improve global health through initiatives that connect people and resources to a world in need. Through our mobilization efforts, we provide medical education, deliver medical aid, respond to people in crisis and address community-health concerns around the globe.</p>
-                </li>
-                <li class="clearfix">
-                    <img src="/Resources/images/agency_3.gif" />
-                    <h3>Salvation Army</h3>
-                    <p>Founded more than 130 years ago by William Booth, The Salvation Army is a religious and social service organization, a branch of the Christian Church dedicated to the battle against sin and despair.</p>
-                    <p>There is an integrated ministry to body, mind and soul. The Army seeks not only to improve the physical environment and provide for material needs, but also to reveal the power of Christ's love. Its social services programs assist children, the elderly, families, and those battling addiction.</p>
-                </li>
+                @foreach (var agency in Model.Agencies)
+                    {
+                        <li class="clearfix">
+                            <img src="@agency.Image" />
+                            <h3>@agency.Name</h3>
+                            <p>@Html.Raw(agency.Description)</p>
+                        </li>
+                    }
             </ul>
         </div>
         <div class="tab-pane" id="C">
@@ -95,7 +113,7 @@
                        <select name="agencyId" id="agencyId" class="select ui-widget-content ui-corner-all">
                            @foreach (var agency in Model.Agencies)
                            {
-                               <option value="@agency.Id">@agency.Description</option>
+                               <option value="@agency.Id">@agency.Name</option>
                            }
                        </select>
                    </div>
@@ -163,6 +181,39 @@
         </div>
         <div class="tab-pane" id="E">
             <p>List of Safe People</p>
+            <section>
+    <div id="table-filters">
+        <div class="left-culumn">
+            <div class="field">
+                <div class="editor-label">Person Filter</div>
+                <div class="editor-field">
+                    <input class="filter actions" data-tablecolumn="1" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped table-hover" id="safegrid">
+        <thead>
+            <th>Name</th>
+            <th>Message</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            @if (Model.SafePeople != null && Model.SafePeople.Any())
+            {
+                foreach (SafePerson person in Model.SafePeople)
+                {
+                <tr>
+                    <td>@string.Format("{0} {1}", @person.FirstName, @person.LastName)</td>
+                    <td>@person.Message</td>
+                    <td></td>
+                </tr>
+                }
+            }
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</section>
         </div>
     </div>
 </div>
