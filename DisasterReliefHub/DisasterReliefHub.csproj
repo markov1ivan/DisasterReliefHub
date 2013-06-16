@@ -207,6 +207,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Code\SecurityHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreTheySafeController.cs" />
     <Compile Include="Controllers\AgencyController.cs" />
@@ -355,6 +356,10 @@
     <ProjectReference Include="..\DisasterReliefHub.Domain\DisasterReliefHub.Domain.csproj">
       <Project>{c3201688-3f3a-48a0-86cb-6f6cca00ebc3}</Project>
       <Name>DisasterReliefHub.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DisasterReliefHub.Libraries\DisasterReliefHub.Libraries.csproj">
+      <Project>{879f505a-8123-4bde-b23a-71bc4ac7f4dd}</Project>
+      <Name>DisasterReliefHub.Libraries</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
