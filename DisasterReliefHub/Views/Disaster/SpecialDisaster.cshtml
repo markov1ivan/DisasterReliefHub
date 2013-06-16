@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Disaster";
+}
+
+<h2>Black Forest Fire (Black Forest, Colorado)</h2>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#A" data-toggle="tab">About</a></li>
+    <li class=""><a href="#B" data-toggle="tab">Supporting Agencies</a></li>
+    <li class=""><a href="#C" data-toggle="tab">Give</a></li>
+    <li class=""><a href="#D" data-toggle="tab">Who is Safe?</a></li>
+</ul>
+<div class="tabbable">
+    <div class="tab-content">
+        <div class="tab-pane active" id="A">
+            <p>The Black Forest fire is an ongoing forest fire that began near Highway 83 and Shoup Road in Black Forest, Colorado around 1:00 PM on June 11, 2013. As of the morning of June 13, 2013 several evacuations for the area have been ordered, and at least 360 structures have been lost according to The Denver Post. The evacuation area is 94,000 acres (147 sq mi; 380 km2) acres, 13,000 homes and 38,000 people. The fire has estimated to have currently burned over 15,000 acres (23 sq mi; 61 km2). There have been two fatalities as a result of this fire.</p>
+            <p>Three shelters have been coordinated in the area for humans, including Elbert County Fairgrounds, which is accepting humans, pets, and large animals. Two other shelters are designated for large animals only.</p>
+            <p>The Denver Post reported (as of June 13) 457 firefighters were working the fireline, including agencies around the fire and the Colorado National Guard, as well as select personnel from fire suppression teams on Fort Carson and the nearby Air Force Academy. Governor Hickenlooper addressed Emergency Managers at the command post on June 12th. U.S. Northern Command is assisting with fire fighting efforts.</p>
+            <p>It is the most destructive fire in Colorado state history, surpassing the 2012 Waldo Canyon Fire, which also began near Colorado Springs.</p>
+            <br />
+            <h4>Recent News (Positive/Negative)</h4>
+            <ul id="news"></ul>
+        </div>
+        <div class="tab-pane" id="B">
+            <p>Agencies</p>
+        </div>
+        <div class="tab-pane" id="C">
+            <h4>Give to support the Black Forest Fire disaster</h4>
+            <form>
+                <p class="validateTips">All fields are required.</p>
+                <h6>About You</h6>
+                <fieldset>
+                    <input type="hidden" name="client_id" id="client_id" value="" />
+                    <input type="hidden" name="client_secret" id="client_secret" value="" />
+                    <input type="hidden" name="destinationId" id="destinationId" value="{agencyemail}" />
+                    <input type="hidden" name="destinationType" id="destinationType" value="Email" />
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName" id="firstName" class="text ui-widget-content ui-corner-all" />
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName" id="lastName" class="text ui-widget-content ui-corner-all" />
+                    <label for="emailAddress">Email Address</label>
+                    <input type="text" name="emailAddress" id="emailAddress" value="" class="text ui-widget-content ui-corner-all" />
+                </fieldset>
+                <h6>Give</h6>
+                <fieldset>
+                    <label for="routingNumber">Your Bank Routing Number</label>
+                    <input type="text" name="routingNumber" id="routingNumber" class="text ui-widget-content ui-corner-all" />
+                    <label for="accountNumber">Your Bank Account Number</label>
+                    <input type="text" name="accountNumber" id="accountNumber" class="text ui-widget-content ui-corner-all" />
+                    <label for="accountType">Account Type</label>
+                    <select name="emailAddress" id="emailAddress" class="select ui-widget-content ui-corner-all">
+                        <option value="Checking">Checking</option>
+                        <option value="Savings">Savings</option>
+                    </select>
+                     <label for="amount">Amount to Give</label>
+                    <input type="text" name="amount" id="amount" class="text ui-widget-content ui-corner-all" />
+               </fieldset>
+                <fieldset>
+                    <p style="text-align:center"><input type="submit" value="Give" /></p>
+
+                </fieldset>
+           </form>
+        </div>
+        <div class="tab-pane" id="D">
+            <p>List of Safe People</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $.getJSON('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=https%3A%2F%2Fnews.google.com%2Fnews%2Fsearch%3Fq%3Dblack%2Bforest%2Bfire%26output%3Drss', function (data) {
+            var items = [];
+            $.each(data.responseData.feed.entries, function (key, feed) {
+                $.ajax({
+                    dataType: "json",
+                    url: 'http://access.alchemyapi.com/calls/url/URLGetTextSentiment?jsonp=?&apikey=0cde067eab8748de7723828d1573bd43fc35553f&outputMode=json&url=' + escape(feed.link),
+                    async:false,
+                    success: function (response) {
+                    var sentiment = response.docSentiment.type;
+                    $('#news').append('<li><div class="sentiment"><img src="/Resources/images/' + sentiment + '.png" /></div><h6><a href="' + feed.link + '">' + feed.title + '</a></h6>' + feed.content + '</li>');
+                    }
+                });
+            });
+        });
+    });
+</script>
+<style>
+    #news {
+    }
+    #news li {
+        list-style: none;height: 150px;overflow: hidden;border-bottom:1px solid #ccc;border-top:1px solid #fff;
+    }
+    #news li:first-of-type {
+        border-top: none;
+    }
+    #news .sentiment {
+        float: right;margin-top: 10px;
+    }
+    #news li table tr td:last-child font br:first-child {
+        display: none;
+    }
+    #news li table tr td:last-child font div:first-of-type {
+        display: none;
+    }
+</style>
