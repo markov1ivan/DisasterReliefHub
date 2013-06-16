@@ -13,7 +13,10 @@ namespace DisasterReliefHub.Domain.Models
         public string Picture { get; set; }
         public string Longitude { get; set; }
         public string Latitude { get; set; }
-        public string Location { get; set; }
+        public string Message { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Country { get; set; }
 
         public MissingPerson MissingPerson { get; set; }
     }

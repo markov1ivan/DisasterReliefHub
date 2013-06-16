@@ -235,6 +235,8 @@
     <Content Include="Resources\css\bootstrap-responsive.min.css" />
     <Content Include="Resources\css\bootstrap.css" />
     <Content Include="Resources\css\bootstrap.min.css" />
+    <Content Include="Resources\css\datatables.css" />
+    <Content Include="Resources\css\jquery.dataTables.css" />
     <Content Include="Resources\css\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Resources\css\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Resources\css\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -308,6 +310,7 @@
     <Content Include="Resources\js\jquery\jquery.validate.min.js" />
     <Content Include="Resources\js\jquery\jquery.validate.unobtrusive.js" />
     <Content Include="Resources\js\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Resources\js\lib\jquery.dataTables.js" />
     <Content Include="Resources\js\lib\knockout-2.2.0.debug.js" />
     <Content Include="Resources\js\lib\knockout-2.2.0.js" />
     <Content Include="Resources\js\lib\modernizr-2.6.2.js" />
@@ -362,6 +365,7 @@
     <Content Include="Views\Donate\ProccessedDonate.cshtml" />
     <Content Include="Views\Disaster\SpecialDisaster.cshtml" />
     <Content Include="Views\AreTheySafe\Index.cshtml" />
+    <Content Include="Views\SafePerson\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DisasterReliefHub.Domain\DisasterReliefHub.Domain.csproj">

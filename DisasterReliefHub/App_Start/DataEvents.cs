@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+using Autofac;
+
+using DisasterReliefHub.Domain.Models;
+using DisasterReliefHub.Domain.Repository;
 using DisasterReliefHub.Utilities.Json;
 using DisasterReliefHub.Utilities.Json.Handlers;
 
@@ -17,7 +21,24 @@ namespace DisasterReliefHub.App_Start
             JsonHttpHandler.RegisterAction("PostPeople", delegate(JObject data)
                 {
                     var result = new JsonResult();
+                    var array = JArray.Parse(data["data"].ToString());
+                    var repo = DependencyInjection.Container.Resolve<IRepository>();
+                    foreach (JToken jToken in array)
+                    {
+                        SafePerson person = new SafePerson();
+                        person.FirstName = jToken["first_name"].Value<string>();
+                        person.LastName = jToken["last_name"].Value<string>();
+                        person.Email = jToken["email"].Value<string>();
+                        person.Latitude = jToken["lat"].Value<string>();
+                        person.Longitude = jToken["lng"].Value<string>();
+                        person.Message = jToken["message"].Value<string>();
+                        person.City = jToken["city"].Value<string>();
+                        person.State = jToken["state"].Value<string>();
+                        person.Country = jToken["country"].Value<string>();
 
+                        repo.Save<SafePerson>(person);
+                    }
+                    result.Success = true;
                     return result;
                 });
         }

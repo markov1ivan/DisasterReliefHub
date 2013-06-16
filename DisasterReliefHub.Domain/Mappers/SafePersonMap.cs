@@ -21,7 +21,6 @@ namespace DisasterReliefHub.Domain.Mappers
             Property(p => p.Longitude);
             Property(p => p.Latitude);
             Property(p => p.Picture);
-            Property(p => p.Location);
             HasOptional(e => e.MissingPerson).WithRequired().Map(x=>x.MapKey("MissingPersonFk"));
         }
     }
