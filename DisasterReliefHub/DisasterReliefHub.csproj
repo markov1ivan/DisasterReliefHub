@@ -210,7 +210,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Code\SecurityHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AreTheySafeController.cs" />
     <Compile Include="Controllers\AgencyController.cs" />
     <Compile Include="Controllers\AreTheySafeController.cs" />
     <Compile Include="Controllers\DisasterController.cs" />
@@ -222,6 +221,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DwollaDonation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Json\Handlers\JsonHttpHandler.cs" />
     <Compile Include="Utilities\Json\JsonResult.cs" />

@@ -1,5 +1,4 @@
-﻿@using DisasterReliefHub.Code
-@model List<Disaster>
+﻿@model List<Disaster>
 @using DisasterReliefHub.Domain.Models
 @{
     ViewBag.Title = "Disaster";
@@ -34,7 +33,7 @@
                 </tbody>
                 <tfoot></tfoot>
             </table>
-             @if (SecurityHelper.IsCurrentUserAdmin())
+             @if (DisasterReliefHub.Code.SecurityHelper.IsCurrentUserAdmin())
              {
                  <a class="btn btn-large" href="@Url.Action("Edit")">Add Disaster</a>
              }

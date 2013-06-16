@@ -1,1 +1,13 @@
 C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub.Libraries\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub.Libraries\bin\Debug\DisasterReliefHub.Libraries.dll
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub.Libraries\bin\Debug\DisasterReliefHub.Libraries.pdb
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub.Libraries\bin\Debug\Newtonsoft.Json.dll
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub.Libraries\bin\Debug\ServiceStack.Common.dll
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub.Libraries\bin\Debug\ServiceStack.Interfaces.dll
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub.Libraries\bin\Debug\ServiceStack.Text.dll
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub.Libraries\bin\Debug\Newtonsoft.Json.xml
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub.Libraries\bin\Debug\ServiceStack.Common.xml
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub.Libraries\bin\Debug\ServiceStack.Interfaces.xml
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub.Libraries\bin\Debug\ServiceStack.Text.xml
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub.Libraries\obj\Debug\DisasterReliefHub.Libraries.dll
+C:\Users\mdunn\Desktop\disasterhub\DisasterReliefHub\DisasterReliefHub.Libraries\obj\Debug\DisasterReliefHub.Libraries.pdb
