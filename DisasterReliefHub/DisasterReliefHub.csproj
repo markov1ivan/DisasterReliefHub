@@ -349,6 +349,7 @@
     <Content Include="Views\Agency\Edit.cshtml" />
     <Content Include="Views\Home\View1.cshtml" />
     <Content Include="Views\Home\View2.cshtml" />
+    <Content Include="Views\Disaster\SpecialDisaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DisasterReliefHub.Domain\DisasterReliefHub.Domain.csproj">

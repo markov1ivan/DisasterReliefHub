@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Autofac;
 
 using DisasterReliefHub.App_Start;
+using DisasterReliefHub.Code;
 using DisasterReliefHub.Domain.Models;
 using DisasterReliefHub.Domain.Repository;
 
@@ -19,6 +20,7 @@ namespace DisasterReliefHub.Controllers
 
         public ActionResult Index()
         {
+            var test = SecurityHelper.CurrentUser();
             var repo = DependencyInjection.Container.Resolve<IRepository>();
             
             return View(repo.Get<Agency>().ToList());
@@ -45,7 +47,7 @@ namespace DisasterReliefHub.Controllers
                 repo.Save<Agency>(model);
             }
 
-            return View(model);
+            return Redirect(Url.Action("Index"));
         }
 
         public ActionResult DonateTo(int agencyId)
