@@ -14,7 +14,7 @@ namespace DisasterReliefHub.Domain.Models
         public string Location { get; set; }
         public bool IsFound { get; set; }
 
-        public User Relative { get; set; }
+        public int UserFk { get; set; }
 
      
     }

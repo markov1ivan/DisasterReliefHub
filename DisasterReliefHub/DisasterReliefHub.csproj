@@ -76,6 +76,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -232,6 +233,7 @@
     <Compile Include="Utilities\Json\Handlers\JsonHttpHandler.cs" />
     <Compile Include="Utilities\Json\JsonResult.cs" />
     <Compile Include="Utilities\Json\JsonUtility.cs" />
+    <Compile Include="Utilities\NotificationTimer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\css\bootstrap-responsive.css" />
@@ -372,6 +374,8 @@
     <Content Include="Views\SafePerson\Index.cshtml" />
     <Content Include="Views\Disaster\Details.cshtml" />
     <Content Include="Views\Disaster\DonationControl.cshtml" />
+    <Content Include="Views\AreTheySafe\Edit.cshtml" />
+    <Content Include="Views\SafePerson\View1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DisasterReliefHub.Domain\DisasterReliefHub.Domain.csproj">
@@ -382,12 +386,20 @@
       <Project>{879f505a-8123-4bde-b23a-71bc4ac7f4dd}</Project>
       <Name>DisasterReliefHub.Libraries</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DisasterReliefHub.Twilio\DisasterReliefHub.Twilio.csproj">
+      <Project>{2d7f77d5-09d8-4fd3-9e17-883b59549053}</Project>
+      <Name>DisasterReliefHub.Twilio</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

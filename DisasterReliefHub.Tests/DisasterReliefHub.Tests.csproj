@@ -64,6 +64,7 @@
     <Compile Include="Domain\RepositoryTests.cs" />
     <Compile Include="DwollaTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TwilioTests.cs" />
     <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +75,10 @@
     <ProjectReference Include="..\DisasterReliefHub.Libraries\DisasterReliefHub.Libraries.csproj">
       <Project>{879f505a-8123-4bde-b23a-71bc4ac7f4dd}</Project>
       <Name>DisasterReliefHub.Libraries</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DisasterReliefHub.Twilio\DisasterReliefHub.Twilio.csproj">
+      <Project>{2d7f77d5-09d8-4fd3-9e17-883b59549053}</Project>
+      <Name>DisasterReliefHub.Twilio</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

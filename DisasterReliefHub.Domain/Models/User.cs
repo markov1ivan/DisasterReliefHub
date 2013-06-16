@@ -20,21 +20,8 @@ namespace DisasterReliefHub.Domain.Models
         public string Phone { get; set; }
 
         public bool IsAdministrator { get; set; }
-        [Column("NotificationType")]
-        public int NotificationTypeValue { get; set; }
 
-        public NotificationType NotificationType
-        {
-            get
-            {
-                return (NotificationType)NotificationTypeValue;
-            }
-            set
-            {
-                NotificationTypeValue = (int)value;
-            }
-        }
-
-        public List<MissingPerson> MissingPersons { get; set; }
+        public bool SendEmailNotification { get; set; }
+        public bool SendPhoneNotification { get; set; }
     }
 }

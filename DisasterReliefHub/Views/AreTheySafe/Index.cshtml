@@ -4,13 +4,49 @@
 @{
     ViewBag.Title = "Index";
 }
+@section styles{
+    <link rel="stylesheet" href="~/Resources/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="~/Resources/css/datatables.css" />
+}
+@section scripts
+{
+    <script type="text/javascript" src="/Resources/js/lib/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var dataTable = $('#persons').dataTable({
+                //            sDom: '<"top"i>rt<"bottom"lp<"clear">',
+                sPaginationType: "full_numbers",
+                bFilter: false,
+                bInfo: true,
+                bJQueryUI: true,
+                bProcessing: false,
+                bServerSide: false,
+            });
+
+            $('input.filter').keyup(function () {
+                /* Filter on the column (the index) of this element */
+                dataTable.fnFilter($(this).val(), $(this).data('tablecolumn'));
+            });
+        });
+    </script>
+}
 <h2>Are They Safe?</h2>
 <h3>People with uknown status</h3>
 <section>
-    <table class="table table-bordered table-striped table-hover">
+    <div id="table-filters">
+        <div class="left-culumn">
+            <div class="field">
+                <div class="editor-label">Person Filter</div>
+                <div class="editor-field">
+                    <input class="filter actions" data-tablecolumn="0" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped table-hover" id="persons">
         <thead>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Name</th>
         </thead>
         <tbody>
             @if (Model != null && Model.Any())
@@ -18,8 +54,7 @@
                 foreach (MissingPerson person in Model)
                 {
                     <tr>
-                        <td>@person.FirstName</td>
-                        <td>@person.LastName</td>
+                        <td data-tablecolumn="1">@string.Format("{0} {1}",person.FirstName,person.LastName)</td>
                     </tr>
                 }
             }
@@ -29,7 +64,7 @@
     <br/>
     @if (SecurityHelper.IsCurrentUserAdmin())
     {
-        <a class="btn btn-large" href="@Url.Action("Edit")">Notify Me</a>
+        <a style="margin-bottom: 10px" class="btn btn-large" href="@Url.Action("Edit")">Notify Me</a>
     }
 </section>
 

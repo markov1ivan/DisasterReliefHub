@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Transactions;
 
 namespace DisasterReliefHub.Domain.Repository
 {
@@ -35,11 +36,15 @@ namespace DisasterReliefHub.Domain.Repository
         {
           throw new ArgumentException("Entity being saved is null");
         }
-        if (entity.Id <= 0)
+        using (TransactionScope scope = new TransactionScope())
         {
-          entity = DataContext.Entities<T>().Add(entity);
+            if (entity.Id <= 0)
+            {
+                entity = DataContext.Entities<T>().Add(entity);
+            }
+            DataContext.SaveChanges();
+            scope.Complete();
         }
-        DataContext.SaveChanges();
         return entity;
       }
 

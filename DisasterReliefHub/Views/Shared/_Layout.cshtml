@@ -64,7 +64,7 @@
                         <div class="nav-collapse collapse" id="main-menu"><ul class="nav" id="main-menu-left">
                                 <li><a id="iamsafe_web_btn" class="btn btn-primary btn-large" href="#">I AM SAFE</a></li>
                                                                               <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                                @if (SecurityHelper.IsCurrentUserAdmin())
+                                @if (Request.IsAuthenticated)
                                 {
                                     <li>@Html.ActionLink("Are They Safe", "Index", "AreTheySafe")</li>
                                 }

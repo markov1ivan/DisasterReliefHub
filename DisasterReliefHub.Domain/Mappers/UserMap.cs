@@ -17,9 +17,8 @@ namespace DisasterReliefHub.Domain.Mappers
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.Email).IsOptional();
             Property(p => p.Phone).IsOptional();
-            Property(p => p.NotificationTypeValue).IsOptional();
-            HasMany(e => e.MissingPersons);
-
+            Property(p => p.SendEmailNotification).IsOptional();
+            Property(p => p.SendPhoneNotification).IsOptional();
         }
     }
 }

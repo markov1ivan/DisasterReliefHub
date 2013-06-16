@@ -13,6 +13,7 @@ using Devtalk.EF.CodeFirst;
 
 using DisasterReliefHub.App_Start;
 using DisasterReliefHub.Domain.Repository;
+using DisasterReliefHub.Utilities;
 
 namespace DisasterReliefHub
 {
@@ -34,6 +35,7 @@ namespace DisasterReliefHub
             AuthConfig.RegisterAuth();
             DataEvents.Setup();
             MockData.Setup();
+            NotificationTimer timer = new NotificationTimer();
         }
     }
 }

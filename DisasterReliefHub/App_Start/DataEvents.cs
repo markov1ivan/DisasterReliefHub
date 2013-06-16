@@ -7,6 +7,7 @@ using Autofac;
 
 using DisasterReliefHub.Domain.Models;
 using DisasterReliefHub.Domain.Repository;
+using DisasterReliefHub.Utilities;
 using DisasterReliefHub.Utilities.Json;
 using DisasterReliefHub.Utilities.Json.Handlers;
 
@@ -47,6 +48,7 @@ namespace DisasterReliefHub.App_Start
                         }
                     }
                     result.Success = true;
+                    NotificationTimer.SendNotifications();
                     return result;
                 });
         }
