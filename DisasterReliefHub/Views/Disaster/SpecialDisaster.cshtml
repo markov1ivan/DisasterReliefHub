@@ -4,9 +4,14 @@
 }
 @section scripts
 {
-    $(document).ready(function(){
-    $("agencyId").change(function(e){});
-    });
+    <script>
+        $(document).ready(function () {
+            $("agencyId").val($("input[name=Donation.Agency.Id]").val());
+            $("agencyId").change(function (e) {
+                $("input[name=Donation.Agency.Id]").val($("agencyId").find(":selected").val());
+            });
+        });
+    </script>
 }
 <h2>Hack The Midwest Earthquake (Kansas City, KS)</h2>
 
@@ -171,8 +176,8 @@
                     url: 'http://access.alchemyapi.com/calls/url/URLGetTextSentiment?jsonp=?&apikey=0cde067eab8748de7723828d1573bd43fc35553f&outputMode=json&url=' + escape(feed.link),
                     async:false,
                     success: function (response) {
-                    var sentiment = response.docSentiment.type;
-                    $('#news').append('<li><div class="sentiment"><img src="/Resources/images/' + sentiment + '.png" /></div><h6><a href="' + feed.link + '">' + feed.title + '</a></h6>' + feed.content + '</li>');
+                        var sentiment = response.docSentiment.type;
+                        $('#news').append('<li><div class="sentiment"><img src="/Resources/images/' + sentiment + '.png" /></div><h6><a href="' + feed.link + '">' + feed.title + '</a></h6>' + feed.content + '</li>');
                     }
                 });
             });
