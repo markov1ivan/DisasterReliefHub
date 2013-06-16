@@ -25,6 +25,7 @@ namespace DisasterReliefHub.Controllers
                     SpecialDisaster model = new SpecialDisaster();
                     model.Agencies = repo.Get<Agency>().ToList();
                     model.SafePeople = repo.Get<SafePerson>().ToList();
+                    model.Donations = repo.Get<Donation>().ToList();
                     model.Donation = new DwollaDonation();
                     model.Donation.Agency = model.Agencies.FirstOrDefault();
                     return View("SpecialDisaster", model);

@@ -37,6 +37,18 @@
                 /* Filter on the column (the index) of this element */
                 $('#safegrid').dataTable().fnFilter($(this).val(), $(this).data('tablecolumn'));
             });
+            
+            var donations = $('#donations').dataTable({
+                sPaginationType: "full_numbers",
+                "aoColumns": [null,null,null],
+                bFilter: false,
+                bInfo: true,
+                bJQueryUI: true,
+                bProcessing: false,
+                bServerSide: false,
+            });
+
+            $('#donations').show();
         });
     </script>
 }
@@ -178,6 +190,29 @@
         </div>
         <div class="tab-pane" id="D">
             <p>List of Donations Made</p>
+            <section>
+                    <table class="table table-bordered table-striped table-hover" id="donations">
+        <thead>
+            <th>Name</th>
+            <th>Message</th>
+            <th>Donation</th>
+        </thead>
+        <tbody>
+            @if (Model.Donations  != null && Model.Donations.Any())
+            {
+                foreach (Donation donation in Model.Donations)
+                {
+                <tr>
+                    <td>@string.Format("{0} {1}", @donation.FirstName, @donation.LastName)</td>
+                    <td>@donation.Notes</td>
+                    <td>@donation.Amount</td>
+                </tr>
+                }
+            }
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+            </section>
         </div>
         <div class="tab-pane" id="E">
             <p>List of Safe People</p>

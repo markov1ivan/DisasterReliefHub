@@ -6,6 +6,8 @@ using System.Net;
 using System.Text;
 using System.Web;
 
+using DisasterReliefHub.Domain.Enumerations;
+
 using Newtonsoft.Json.Linq;
 
 using ServiceStack.Common.Web;
@@ -74,9 +76,5 @@ namespace DisasterReliefHub.Libraries
         public string Message { get; set; }
         public string Response { get; set; }
     }
-    public enum DwollaAccountType
-    {
-        Checking = 0,
-        Savings
-    }
+
 }

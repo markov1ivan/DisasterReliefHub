@@ -13,6 +13,8 @@ namespace DisasterReliefHub.Models
 
         public List<SafePerson> SafePeople { get; set; }
 
+        public List<Donation> Donations { get; set; }
+
         public DwollaDonation Donation { get; set; }
     }
 }
