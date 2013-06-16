@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DisasterReliefHub.Domain.Repository
 {
-    public interface IEntity
+    public interface IEntity: ICloneable
     {
         int Id { get; set; }
     }

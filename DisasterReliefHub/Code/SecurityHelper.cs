@@ -22,6 +22,10 @@ namespace DisasterReliefHub.Code
             var repo = DependencyInjection.Container.Resolve<IRepository>();
             var user = repo.Query<User>()
                 .FirstOrDefault(u => u.Username.ToLower() == WebSecurity.CurrentUserName.ToLower());
+            if (user != null)
+            {
+                user = repo.Get<User>(user.Id);
+            }
             return user;
         }
 

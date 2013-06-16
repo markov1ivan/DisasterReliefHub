@@ -14,5 +14,15 @@ namespace DisasterReliefHub.Domain.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual int Id { get; set; }
+
+        public IEntity Clone()
+        {
+            return (IEntity)((ICloneable)this).Clone();
+        }
+
+        object ICloneable.Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

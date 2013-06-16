@@ -37,6 +37,7 @@ namespace DisasterReliefHub.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)] 
         public ActionResult Edit(Agency model)
         {
             if (ModelState.IsValid)

@@ -53,6 +53,7 @@ namespace DisasterReliefHub.Controllers
 
 
                 repo.Save(user);
+                return this.Redirect(Url.Action("Index"));
             }
 
             return View(model);

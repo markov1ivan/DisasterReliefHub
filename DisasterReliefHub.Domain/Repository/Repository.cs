@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Transactions;
@@ -22,33 +23,38 @@ namespace DisasterReliefHub.Domain.Repository
 
         T IRepository.Get<T>(int id)
         {
-          return DataContext.Entities<T>().FirstOrDefault(entity => entity.Id == id);
+            return DataContext.Entities<T>().Find(id);
         }
 
         IQueryable<T> IRepository.Query<T>()
         {
-          return DataContext.Entities<T>().AsQueryable();
+            return DataContext.Entities<T>().AsQueryable();
         }
 
-      T IRepository.Save<T>(T entity)
-      {
-        if (entity == null)
+        T IRepository.Save<T>(T entity) 
         {
-          throw new ArgumentException("Entity being saved is null");
-        }
-        using (TransactionScope scope = new TransactionScope())
-        {
+            if (entity == null)
+            {
+                throw new ArgumentException("Entity being saved is null");
+            }
+            var entities = DataContext.Entities<T>();
             if (entity.Id <= 0)
             {
-                entity = DataContext.Entities<T>().Add(entity);
+                entity = entities.Add(entity);
             }
-            DataContext.SaveChanges();
-            scope.Complete();
-        }
-        return entity;
-      }
+            else
+            {
+                var existing = entities.Find(entity.Id);
+                existing = (T)entity.Clone();
+                DataContext.ChangeTracker.DetectChanges();
+            }
 
-      public void Dispose()
+            DataContext.SaveChanges();
+
+            return entity;
+        }
+
+        public void Dispose()
       {
           DataContext.Dispose();
           DataContext = null;
