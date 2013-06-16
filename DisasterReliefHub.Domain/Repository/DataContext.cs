@@ -16,8 +16,6 @@ namespace DisasterReliefHub.Domain.Repository
         public DataContext(string configuration)
             : base(configuration)
         {
-            Configuration.AutoDetectChangesEnabled = true;
-            Configuration.LazyLoadingEnabled = true;
         }
 
         public void InitializeDatabase()
@@ -28,7 +26,7 @@ namespace DisasterReliefHub.Domain.Repository
 
         public IDbSet<T> Entities<T>() where T : class, IEntity 
         {
-            return  this.Set<T>();
+            return Set<T>();
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

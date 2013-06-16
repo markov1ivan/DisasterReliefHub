@@ -42,12 +42,6 @@ namespace DisasterReliefHub.Domain.Repository
             {
                 entity = entities.Add(entity);
             }
-            else
-            {
-                var existing = entities.Find(entity.Id);
-                existing = (T)entity.Clone();
-                DataContext.ChangeTracker.DetectChanges();
-            }
 
             DataContext.SaveChanges();
 

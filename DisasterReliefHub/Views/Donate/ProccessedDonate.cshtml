@@ -11,7 +11,7 @@
         {
             disaster = " for " + Model.Disaster.Name;
         }
-    <h2>Thank for donating to the @Model.Agency.Name@disaster</h2>
+    <h2>Thank you for donating to the @Model.Agency.Name@disaster</h2>
     <fieldset>
         <h4>Transaction #@Html.DisplayFor(model => model.Transaction)</h4>
         <p>Amount Donated: $@Html.DisplayFor(model => model.Amount)</p>
@@ -21,7 +21,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", "Agency")
 </div>
 
 @section Scripts {
