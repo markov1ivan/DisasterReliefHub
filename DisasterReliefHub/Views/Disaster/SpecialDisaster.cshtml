@@ -119,7 +119,7 @@
                     async:false,
                     success: function (response) {
                         var sentiment = response.docSentiment.type;
-                        $('#news').append('<li><div class="sentiment"><img src="/Resources/images/' + sentiment + '.png" /></div><h6><a href="' + feed.link + '">' + feed.title + '</a></h6>' + feed.content + '</li>');
+                        $('#news').append('<li><div class="sentiment"><img src="http://a6e6fad2d184a3bcfa10-5c7e44dc9162544fc5faee10623905da.r26.cf1.rackcdn.com/' + sentiment + '.png" /></div><h6><a href="' + feed.link + '">' + feed.title + '</a></h6>' + feed.content + '</li>');
                     }
                 });
             });

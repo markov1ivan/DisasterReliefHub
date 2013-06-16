@@ -30,7 +30,7 @@ namespace DisasterReliefHub.App_Start
                                  Email = "disasterhub+redrcross@gmail.com",
                                  FirstName = "Anonymous",
                                  LastName = "Anonymous",
-                                 Image = "/Resources/images/agency_1.png"
+                                 Image = "http://a6e6fad2d184a3bcfa10-5c7e44dc9162544fc5faee10623905da.r26.cf1.rackcdn.com/agency_1.png"
                              };
                 repo.Save(agency);
             }
@@ -44,7 +44,7 @@ namespace DisasterReliefHub.App_Start
                                  Email = "disasterhub+emergencyrelief@gmail.com",
                                  FirstName = "Anonymous",
                                  LastName = "Anonymous",
-                                 Image = "/Resources/images/agency_2.png"
+                                 Image = "http://a6e6fad2d184a3bcfa10-5c7e44dc9162544fc5faee10623905da.r26.cf1.rackcdn.com/agency_2.png"
                              };
                 repo.Save(agency);
             }
@@ -58,7 +58,7 @@ namespace DisasterReliefHub.App_Start
                                  Email = "disasterhub+salvationarmy@gmail.com",
                                  FirstName = "Anonymous",
                                  LastName = "Anonymous",
-                                 Image = "/Resources/images/agency_3.gif"
+                                 Image = "http://a6e6fad2d184a3bcfa10-5c7e44dc9162544fc5faee10623905da.r26.cf1.rackcdn.com/agency_3.gif"
                              };
                 repo.Save(agency);
             }
