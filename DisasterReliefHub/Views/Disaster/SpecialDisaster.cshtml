@@ -138,8 +138,16 @@
                         </div>
                     </div>
                 </div>
-        <div id="myPublisherDiv"></div>
-    <table class="table table-bordered table-striped table-hover" id="safegrid">
+            </div>
+        </div>
+    </div>
+    <div id="streams">  
+        <div id="stream-container-1" class="stream-container"></div>
+        <div id="stream-container-2" class="stream-container"></div>
+        <div id="stream-container-3" class="stream-container"></div>
+        <div id="stream-container-4" class="stream-container"></div>
+     </div>
+     <table class="table table-bordered table-striped table-hover" id="safegrid">
         <thead>
             <th>Name</th>
             <th>Message</th>
@@ -184,20 +192,85 @@
         });*/
     });
     function videoChat(id) {
+        $('#streams').show();
         var sessionId = '';
+        var session = '';
         var token = '';
         var apiKey = '32385772';
         $.getJSON('http://comicbookrealm.com/contextio/opentok.php?id='+id+'&callback=?',function(response) {
             sessionId = response.sessionId;
             token = response.token;
-            var session = TB.initSession(sessionId);
+            // Enable console logs for debugging
+            TB.setLogLevel(TB.DEBUG);
+
+            // Initialize session, set up event listeners, and connect
+            session = TB.initSession(sessionId);
             session.addEventListener('sessionConnected', sessionConnectedHandler);
+            session.addEventListener('streamCreated', streamCreatedHandler);
             session.connect(apiKey, token);
-       });
+        });
           
         function sessionConnectedHandler(event) {
-            var publisher = TB.initPublisher(apiKey, 'myPublisherDiv');
+            var div = document.createElement("div");
+            div.setAttribute("id", "publisher");
+
+            var container = document.getElementById("stream-container-1");
+            container.appendChild(div);
+
+            var publisher = TB.initPublisher(apiKey, "publisher");
             session.publish(publisher);
+
+            subscribeToStreams(event.streams);
+        }
+
+        function streamCreatedHandler(event) {
+            subscribeToStreams(event.streams);
+        }
+
+        function streamDestroyedHandler(event) {
+            for (var i = 0; i < event.streams.length; i++) {
+                var stream = event.streams[i];
+                _streams.splice(_streams.indexOf(stream), 1);
+            }
+        }
+
+        function subscribeToStreams(streams) {
+            for (var i = 0; i < streams.length; i++) {
+                if (_streams.length >= 4) {
+                    return;
+                }
+
+                var stream = streams[i];
+                _streams.push(stream);
+
+                // Make sure we don't subscribe to ourself
+                if (streams[i].connection.connectionId == session.connection.connectionId) {
+                    //$("#allowFloater").fadeOut('fast');
+                    return;
+                }
+
+                var containerDivId;
+                // Get the first strema container without a stream
+                $(".stream-container").each(function(index, container) { 
+                    if (!containerDivId && $(this).children().length == 0) {
+                        containerDivId = this.id;
+                    }
+                });
+
+                if (!containerDivId) {
+                    return;
+                }
+
+                // Create the div to put the subscriber element in to
+                var div = document.createElement('div');
+                div.setAttribute('id', 'stream' + streams[i].streamId);
+
+                var container = document.getElementById(containerDivId);
+                container.appendChild(div);
+
+                // Subscribe to the stream
+                session.subscribe(streams[i], div.id);
+            }
         }
    }
 </script>
@@ -243,5 +316,44 @@
             }
     #agencies li:first-of-type {
         border-top: none;
-    }
+    }#streams {
+border: 1px solid #bbb;
+height: 525px;
+margin: 0 auto;
+border-radius: 3px;
+overflow: hidden;
+}#streams  {
+  border: 1px solid #bbb;
+  height: 525px;
+  margin: 0 auto;
+  border-radius: 3px;
+  overflow: hidden;
+  display:none;
+}
+
+.stream-container {
+  width: 50%;
+  height: 50%;
+  float: left;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.stream-container > * {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+#stream-container-1 {
+  border-right: 1px dotted #ccc;
+  border-bottom: 1px dotted #ccc;
+}
+
+#stream-container-2 {
+  border-bottom: 1px dotted #ccc;
+}
+
+#stream-container-3 {
+  border-right: 1px dotted #ccc;
+}
 </style>
