@@ -84,7 +84,7 @@
             </section>
         </div>
         <div class="tab-pane" id="E">
-            <p>List of Safe People</p>
+            <h3>The following have all checked in!</h3>
             <section>
     <div id="streams">  
         <div id="stream-container-1" class="stream-container"></div>
@@ -110,7 +110,6 @@
 <script type="text/javascript">
     $(function () {
         $('#Amount').attr('placeholder', '0.00').val('');
-        /*
         $.getJSON('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=https%3A%2F%2Fnews.google.com%2Fnews%2Fsearch%3Fq%3Dhackathon%26output%3Drss', function (data) {
             var items = [];
             $.each(data.responseData.feed.entries, function (key, feed) {
@@ -124,7 +123,7 @@
                     }
                 });
             });
-        });*/
+        });
     });
     function videoChat(id) {
         $('#streams').show();
@@ -132,6 +131,7 @@
         var session = '';
         var token = '';
         var apiKey = '32385772';
+        var _streams = [];
         $.getJSON('http://comicbookrealm.com/contextio/opentok.php?id='+id+'&callback=?',function(response) {
             sessionId = response.sessionId;
             token = response.token;
@@ -148,9 +148,7 @@
         function sessionConnectedHandler(event) {
             var div = document.createElement("div");
             div.setAttribute("id", "publisher");
-            //alert(event.streams.length+1);
-            var streamscount = parseInt(event.streams.length)+1;
-            var container = document.getElementById("stream-container-"+streamscount);
+            var container = document.getElementById("stream-container-1");
             container.appendChild(div);
 
             var publisher = TB.initPublisher(apiKey, "publisher");
@@ -166,18 +164,18 @@
         function streamDestroyedHandler(event) {
             for (var i = 0; i < event.streams.length; i++) {
                 var stream = event.streams[i];
-                streams.splice(_streams.indexOf(stream), 1);
+                _streams.splice(_streams.indexOf(stream), 1);
             }
         }
 
         function subscribeToStreams(streams) {
             for (var i = 0; i < streams.length; i++) {
-                if (streams.length >= 4) {
+                if (_streams.length >= 4) {
                     return;
                 }
 
                 var stream = streams[i];
-                streams.push(stream);
+                _streams.push(stream);
 
                 // Make sure we don't subscribe to ourself
                 if (streams[i].connection.connectionId == session.connection.connectionId) {
@@ -208,7 +206,7 @@
                 session.subscribe(streams[i], div.id);
             }
         }
-   }
+    }
 </script>
 <style>
     #A {
