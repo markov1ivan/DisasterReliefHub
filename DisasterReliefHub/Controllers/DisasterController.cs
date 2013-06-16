@@ -9,6 +9,7 @@ using Autofac;
 using DisasterReliefHub.App_Start;
 using DisasterReliefHub.Domain.Models;
 using DisasterReliefHub.Domain.Repository;
+using DisasterReliefHub.Models;
 
 namespace DisasterReliefHub.Controllers
 {
@@ -16,16 +17,21 @@ namespace DisasterReliefHub.Controllers
     {
         public ActionResult Index(int disasterId = -1)
         {
+            var repo = DependencyInjection.Container.Resolve<IRepository>();
             if (disasterId > 0)
             {
                 if (disasterId == 1)
                 {
-                    return View("SpecialDisaster");
+                    SpecialDisaster model = new SpecialDisaster();
+                    model.Agencies = repo.Get<Agency>().ToList();
+                    model.SafePeople = repo.Get<SafePerson>().ToList();
+                    model.Donation = new DwollaDonation();
+                    model.Donation.Agency = model.Agencies.FirstOrDefault();
+                    return View("SpecialDisaster", model);
                 }
                 else
                 {
 
-                    var repo = DependencyInjection.Container.Resolve<IRepository>();
                     var disaster = repo.Get<Disaster>(disasterId);
                     return View("Details", disaster);
                 }

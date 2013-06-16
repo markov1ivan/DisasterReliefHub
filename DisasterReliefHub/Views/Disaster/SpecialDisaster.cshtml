@@ -1,7 +1,45 @@
-﻿@{
+﻿@using DisasterReliefHub.Domain.Models
+@model DisasterReliefHub.Models.SpecialDisaster
+@{
     ViewBag.Title = "Disaster";
 }
+@section styles{
+    <link rel="stylesheet" href="~/Resources/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="~/Resources/css/datatables.css" />
+}
+@section scripts
+{
+    <script type="text/javascript" src="/Resources/js/lib/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#agencyId").val($("#Donation_Agency_Id").val());
+            $("#agencyId").change(function (e) {
+                var selected = $("#agencyId").find(":selected").val();
+                $("#Donation_Agency_Id").val(selected);
+            });
+            
+            var dataTable = $('#safegrid').dataTable({
+                //            sDom: '<"top"i>rt<"bottom"lp<"clear">',
+                sPaginationType: "full_numbers",
+                "aoColumns": [
+                    null,
+    null,
+    null],
+                bFilter: false,
+                bInfo: true,
+                bJQueryUI: true,
+                bProcessing: false,
+                bServerSide: false,
+            });
 
+            $('#safegrid').show();
+            $('input.filter').keyup(function () {
+                /* Filter on the column (the index) of this element */
+                $('#safegrid').dataTable().fnFilter($(this).val(), $(this).data('tablecolumn'));
+            });
+        });
+    </script>
+}
 <h2>Hack The Midwest Earthquake (Kansas City, KS)</h2>
 
 <ul class="nav nav-tabs">
@@ -24,77 +62,158 @@
         </div>
         <div class="tab-pane" id="B">
             <ul id="agencies" class="clearfix">
-                <li class="clearfix">
-                    <img src="/Resources/images/agency_1.png" />
-                    <h3>American Red Cross</h3>
-                    <p>The American Red Cross exists to provide compassionate care to those in need. Our network of generous donors, volunteers and employees share a mission of preventing and relieving suffering, here at home and around the world.</p>
-                    <p>The Red Cross responds to approximately 70,000 disasters in the United States every year, ranging from home fires that affect a single family to hurricanes that affect tens of thousands, to earthquakes that impact millions. In these events, the Red Cross provides shelter, food, health and mental health services to help families and entire communities get back on their feet. Although the Red Cross is not a government agency, it is an essential part of the response when disaster strikes. We work in partnership with other agencies and organizations that provide services to disaster victims.</p>
-                </li>
-                <li class="clearfix">
-                    <img src="/Resources/images/agency_2.png" />
-                    <h3>Heart to Heart International</h3>
-                    <p>Heart to Heart International has been creating a healthier world since 1992. Our mission is to improve global health through initiatives that connect people and resources to a world in need. Through our mobilization efforts, we provide medical education, deliver medical aid, respond to people in crisis and address community-health concerns around the globe.</p>
-                </li>
-                <li class="clearfix">
-                    <img src="/Resources/images/agency_3.gif" />
-                    <h3>Salvation Army</h3>
-                    <p>Founded more than 130 years ago by William Booth, The Salvation Army is a religious and social service organization, a branch of the Christian Church dedicated to the battle against sin and despair.</p>
-                    <p>There is an integrated ministry to body, mind and soul. The Army seeks not only to improve the physical environment and provide for material needs, but also to reveal the power of Christ's love. Its social services programs assist children, the elderly, families, and those battling addiction.</p>
-                </li>
+                @foreach (var agency in Model.Agencies)
+                    {
+                        <li class="clearfix">
+                            <img src="@agency.Image" />
+                            <h3>@agency.Name</h3>
+                            <p>@Html.Raw(agency.Description)</p>
+                        </li>
+                    }
             </ul>
         </div>
         <div class="tab-pane" id="C">
             <h3>Give to support the Hack The Midwest Earthquake disaster</h3>
-            <form>
-                <p class="validateTips">All fields are required.</p>
-                <h3>About You</h3>
-                <fieldset>
-                    <input type="hidden" name="client_id" id="client_id" value="" />
-                    <input type="hidden" name="client_secret" id="client_secret" value="" />
-                    <input type="hidden" name="destinationId" id="destinationId" value="{agencyemail}" />
-                    <input type="hidden" name="destinationType" id="destinationType" value="Email" />
-                    <label for="firstName">First Name</label>
-                    <input type="text" name="firstName" id="firstName" class="text ui-widget-content ui-corner-all" />
-                    <label for="lastName">Last Name</label>
-                    <input type="text" name="lastName" id="lastName" class="text ui-widget-content ui-corner-all" />
-                    <label for="emailAddress">Email Address</label>
-                    <input type="email" name="emailAddress" id="emailAddress" value="" class="text ui-widget-content ui-corner-all" />
-                </fieldset>
-                <h3>Give</h3>
-                <fieldset>
-                    <label for="agencyId">Give To</label>
-                    <select name="agencyId" id="agencyId" class="select ui-widget-content ui-corner-all">
-                        <option value="1">American Red Cross</option>
-                        <option value="2">Heart to Heart International</option>
-                        <option value="3">Salvation Army</option>
-                    </select>
-                    <label for="routingNumber">Your Bank Routing Number</label>
-                    <input type="text" name="routingNumber" id="routingNumber" class="text ui-widget-content ui-corner-all" />
-                    <label for="accountNumber">Your Bank Account Number</label>
-                    <input type="text" name="accountNumber" id="accountNumber" class="text ui-widget-content ui-corner-all" />
-                    <label for="accountType">Account Type</label>
-                    <select name="emailAddress" id="emailAddress" class="select ui-widget-content ui-corner-all">
-                        <option value="Checking">Checking</option>
-                        <option value="Savings">Savings</option>
-                    </select>
-                    <label for="anonymous">Give Anonymously?</label>
-                    <input type="checkbox" name="anonymous" id="anonymous" value="1" />
-                    <label for="amount">How much would you like to give?</label>
-                    $<input type="text" name="amount" id="amount" class="text ui-widget-content ui-corner-all" placeholder="0.00" />
-                    <label for="notes">Message</label>
-                    <textarea name="notes" id="notes" onkeyup="if(parseInt($(this).val().length)>250) {$(this).val($(this).val().substr(0,250)) }$('#chars').html(250-parseInt($(this).val().length)+' characters remaining')"></textarea><br /><span id="chars">250 characters remaining</span>
-                </fieldset>
-                <fieldset>
-                    <p style="text-align:center"><input type="submit" value="Give" /></p>
+           @using (Html.BeginForm("Index", "Donate"))
+           {
+               @Html.AntiForgeryToken()
+               @Html.ValidationSummary(true)
+               <fieldset>
+                   @Html.HiddenFor(model => model.Donation.Agency.Id)
+                   @Html.HiddenFor(model => model.Donation.Disaster.Id)
+                   <legend>Dwolla Donation</legend>
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.Donation.FirstName)
+                   </div>
+                   <div class="editor-field">
+                       @Html.EditorFor(model => model.Donation.FirstName)
+                       @Html.ValidationMessageFor(model => model.Donation.FirstName)
+                   </div>
 
-                </fieldset>
-           </form>
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.Donation.LastName)
+                   </div>
+                   <div class="editor-field">
+                       @Html.EditorFor(model => model.Donation.LastName)
+                       @Html.ValidationMessageFor(model => model.Donation.LastName)
+                   </div>
+        
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.Donation.Email)
+                   </div>
+                   <div class="editor-field">
+                       @Html.EditorFor(model => model.Donation.Email)
+                       @Html.ValidationMessageFor(model => model.Donation.Email)
+                   </div>
+               </fieldset>
+               <h3>Give</h3>
+               <fieldset>
+                   <div class="editor-label">Give To</div>
+                   <div class="editor-field">
+                       <select name="agencyId" id="agencyId" class="select ui-widget-content ui-corner-all">
+                           @foreach (var agency in Model.Agencies)
+                           {
+                               <option value="@agency.Id">@agency.Name</option>
+                           }
+                       </select>
+                   </div>
+
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.Donation.Amount)
+                   </div>
+                   <div class="editor-field">
+                       @Html.EditorFor(model => model.Donation.Amount)
+                       @Html.ValidationMessageFor(model => model.Donation.Amount)
+                   </div>
+
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.Donation.BankAccount)
+                   </div>
+                   <div class="editor-field">
+                       @Html.EditorFor(model => model.Donation.BankAccount)
+                       @Html.ValidationMessageFor(model => model.Donation.BankAccount)
+                   </div>
+
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.Donation.RoutingNumber)
+                   </div>
+                   <div class="editor-field">
+                       @Html.EditorFor(model => model.Donation.RoutingNumber)
+                       @Html.ValidationMessageFor(model => model.Donation.RoutingNumber)
+                   </div>
+        
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.Donation.AccountType)
+                   </div>
+                   <div class="editor-field">
+                       <select name="AccountType" id="AccountType" class="select ui-widget-content ui-corner-all">
+                           <option value="0">Checking</option>
+                           <option value="1">Savings</option>
+                       </select>
+                       @Html.ValidationMessageFor(model => model.Donation.RoutingNumber)
+                   </div>
+        
+
+                   <div class="editor-label">
+                       <label for="anonymous">Give Anonymously?</label>
+                   </div>
+                   <div class="editor-field">
+                       <input type="checkbox" name="IsAnonymously" id="IsAnonymously" value="1" />
+                   </div>
+
+                   <div class="editor-label">
+                       @Html.LabelFor(model => model.Donation.Notes)
+                   </div>
+                   <div class="editor-field">
+                       @Html.TextAreaFor(model => model.Donation.Notes, new { onkeyup = "if(parseInt($(this).val().length)>250) {$(this).val($(this).val().substr(0,250)) }$('#chars').html(250-parseInt($(this).val().length)+' characters remaining')", })
+                       <br /><span id="chars">250 characters remaining</span>
+                       @Html.ValidationMessageFor(model => model.Donation.Notes)
+                   </div>
+
+                   <p>
+                       <input type="submit" value="Create" />
+                   </p>
+               </fieldset>
+           }
         </div>
         <div class="tab-pane" id="D">
             <p>List of Donations Made</p>
         </div>
         <div class="tab-pane" id="E">
             <p>List of Safe People</p>
+            <section>
+    <div id="table-filters">
+        <div class="left-culumn">
+            <div class="field">
+                <div class="editor-label">Person Filter</div>
+                <div class="editor-field">
+                    <input class="filter actions" data-tablecolumn="1" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped table-hover" id="safegrid">
+        <thead>
+            <th>Name</th>
+            <th>Message</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            @if (Model.SafePeople != null && Model.SafePeople.Any())
+            {
+                foreach (SafePerson person in Model.SafePeople)
+                {
+                <tr>
+                    <td>@string.Format("{0} {1}", @person.FirstName, @person.LastName)</td>
+                    <td>@person.Message</td>
+                    <td></td>
+                </tr>
+                }
+            }
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</section>
         </div>
     </div>
 </div>
@@ -108,8 +227,8 @@
                     url: 'http://access.alchemyapi.com/calls/url/URLGetTextSentiment?jsonp=?&apikey=0cde067eab8748de7723828d1573bd43fc35553f&outputMode=json&url=' + escape(feed.link),
                     async:false,
                     success: function (response) {
-                    var sentiment = response.docSentiment.type;
-                    $('#news').append('<li><div class="sentiment"><img src="/Resources/images/' + sentiment + '.png" /></div><h6><a href="' + feed.link + '">' + feed.title + '</a></h6>' + feed.content + '</li>');
+                        var sentiment = response.docSentiment.type;
+                        $('#news').append('<li><div class="sentiment"><img src="/Resources/images/' + sentiment + '.png" /></div><h6><a href="' + feed.link + '">' + feed.title + '</a></h6>' + feed.content + '</li>');
                     }
                 });
             });

@@ -33,6 +33,7 @@ namespace DisasterReliefHub
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
             DataEvents.Setup();
+            MockData.Setup();
         }
     }
 }

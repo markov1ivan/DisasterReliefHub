@@ -42,6 +42,11 @@ namespace DisasterReliefHub.Controllers
                 var repo = DependencyInjection.Container.Resolve<IRepository>();
                 var agency = repo.Get<Agency>(model.Agency.Id);
                 var disaster = repo.Get<Disaster>(model.Disaster.Id);
+                if (model.IsAnonymously)
+                {
+                    model.FirstName = "Anonymous";
+                    model.LastName = "Anonymous";
+                }
                 var dwolla = DependencyInjection.Container.Resolve<Dwolla>();
                 var result = dwolla.Send(agency.Email, model.Email, model.Amount, model.FirstName, model.LastName, model.RoutingNumber, model.BankAccount, model.AccountType, model.Notes);
                 model.ResultMessage = result.Message;

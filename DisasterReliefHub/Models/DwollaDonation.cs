@@ -42,5 +42,7 @@ namespace DisasterReliefHub.Models
 
         [Display(Name = "Message")]
         public string Notes { get; set; }
+
+        public bool IsAnonymously { get; set; }
     }
 }
